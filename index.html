@@ -6,11 +6,11 @@
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700;1,900&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 <style>
-:root{--primary:#dc2626;--primary-light:#ef4444;--primary-glow:rgba(220,38,38,0.18);--accent:#b91c1c;--bg:#faf7f2;--bg-secondary:#f0ebe3;--card:#ffffff;--text:#1a1a1a;--text-muted:#6b7280;--border:rgba(0,0,0,0.06);--shadow:0 1px 3px rgba(0,0,0,0.04),0 4px 12px rgba(0,0,0,0.03);--shadow-lg:0 8px 30px rgba(0,0,0,0.08);--radius:16px;--story-gradient:conic-gradient(from 0deg,#dc2626,#ef4444,#b91c1c,#7f1d1d,#dc2626);--admin:#7c3aed;--admin-glow:rgba(124,58,237,0.15);--danger:#dc2626;--ease:cubic-bezier(.16,1,.3,1);}
+:root{--primary:#dc2626;--primary-light:#ef4444;--primary-glow:rgba(220,38,38,0.18);--accent:#b91c1c;--bg:#faf7f2;--bg-secondary:#f0ebe3;--card:#ffffff;--text:#1a1a1a;--text-muted:#6b7280;--border:rgba(0,0,0,0.06);--shadow:0 1px 3px rgba(0,0,0,0.04),0 4px 12px rgba(0,0,0,0.03);--shadow-lg:0 8px 30px rgba(0,0,0,0.08);--radius:16px;--story-gradient:conic-gradient(from 0deg,#dc2626,#ef4444,#b91c1c,#7f1d1d,#dc2626);--admin:#7c3aed;--admin-glow:rgba(124,58,237,0.15);--success:#16a34a;--success-glow:rgba(22,163,74,0.12);--warn:#d97706;--warn-glow:rgba(217,119,6,0.12);--ease:cubic-bezier(.16,1,.3,1);}
 body.dark{--bg:#0a0a0a;--bg-secondary:#141414;--card:#1a1a1a;--text:#fafafa;--text-muted:#888;--border:rgba(255,255,255,0.06);--shadow:0 1px 3px rgba(0,0,0,0.2);--shadow-lg:0 8px 30px rgba(0,0,0,0.4);}
 *{margin:0;padding:0;box-sizing:border-box;}
 body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);min-height:100vh;transition:background .4s,color .4s;overflow-x:hidden;-webkit-tap-highlight-color:transparent;font-size:16px;line-height:1.6;}
-body::before{content:'';position:fixed;inset:0;opacity:.015;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");pointer-events:none;z-index:9999;}
+body::before{content:'';position:fixed;inset:0;opacity:.012;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");pointer-events:none;z-index:9999;}
 @keyframes revealUp{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:translateY(0)}}
 @keyframes revealScale{from{opacity:0;transform:scale(.92)}to{opacity:1;transform:scale(1)}}
 @keyframes pulse-dot{0%,100%{transform:scale(1);opacity:1}50%{transform:scale(1.4);opacity:.6}}
@@ -20,19 +20,17 @@ body::before{content:'';position:fixed;inset:0;opacity:.015;background-image:url
 @keyframes slideUp{from{transform:translateY(100%)}to{transform:translateY(0)}}
 @keyframes heartPop{0%{transform:scale(1)}30%{transform:scale(1.35)}60%{transform:scale(.9)}100%{transform:scale(1)}}
 @keyframes blink{0%,100%{opacity:1}50%{opacity:.3}}
-.reveal-up{animation:revealUp .5s var(--ease) both;}
-.reveal-scale{animation:revealScale .45s var(--ease) both;}
-
+@keyframes notifSlide{from{opacity:0;transform:translateX(-50%) translateY(-20px) scale(.92)}to{opacity:1;transform:translateX(-50%) translateY(0) scale(1)}}
 .auth-overlay{position:fixed;inset:0;z-index:1000;background:var(--bg);display:flex;align-items:center;justify-content:center;transition:opacity .4s;}
 .auth-overlay.hidden{opacity:0;pointer-events:none;}
 .auth-box{width:100%;max-width:420px;padding:48px 36px;text-align:center;animation:revealScale .6s var(--ease) both;}
-.auth-logo{font-family:'Playfair Display',serif;font-weight:700;font-style:italic;font-size:26px;margin-bottom:8px;display:flex;align-items:center;justify-content:center;gap:10px;}
+.auth-logo{font-family:'Playfair Display',serif;font-weight:700;font-style:italic;font-size:24px;margin-bottom:8px;display:flex;align-items:center;justify-content:center;gap:10px;}
 .auth-logo .logo-dot{width:10px;height:10px;border-radius:50%;background:var(--primary);animation:pulse-dot 2s ease infinite;}
 .auth-sub{font-size:15px;color:var(--text-muted);margin-bottom:36px;}
 .auth-tabs{display:flex;border-bottom:2px solid var(--border);margin-bottom:28px;}
 .auth-tab{flex:1;padding:12px 0;font-size:14px;font-weight:700;text-transform:uppercase;letter-spacing:.6px;color:var(--text-muted);cursor:pointer;border:none;background:none;position:relative;transition:color .25s;font-family:'DM Sans',sans-serif;}
 .auth-tab.active{color:var(--primary);}
-.auth-tab.active::after{content:'';position:absolute;bottom:-2px;left:20%;right:20%;height:2px;background:var(--primary);border-radius:2px;transition:left .3s var(--ease),right .3s var(--ease);}
+.auth-tab.active::after{content:'';position:absolute;bottom:-2px;left:20%;right:20%;height:2px;background:var(--primary);border-radius:2px;}
 .auth-form{display:none;animation:revealUp .3s var(--ease) both;}
 .auth-form.active{display:block;}
 .auth-field{margin-bottom:18px;text-align:left;}
@@ -53,89 +51,38 @@ body::before{content:'';position:fixed;inset:0;opacity:.015;background-image:url
 .auth-submit .btn-spinner::after{content:'';width:20px;height:20px;border:2px solid rgba(255,255,255,.3);border-top-color:#fff;border-radius:50%;animation:spin .6s linear infinite;}
 .auth-hint{font-size:14px;color:var(--text-muted);margin-top:20px;line-height:1.6;}
 .auth-hint a{color:var(--primary);font-weight:600;text-decoration:none;}
-
+.setup-banner{background:linear-gradient(135deg,var(--warn-glow),rgba(217,119,6,0.05));border:1px solid rgba(217,119,6,0.2);border-radius:14px;padding:16px 20px;margin-bottom:20px;text-align:left;}
+.setup-banner p{font-size:14px;color:var(--text);margin-bottom:12px;line-height:1.5;font-weight:500;}
+.setup-banner p i{color:var(--warn);margin-right:6px;}
+.setup-field{margin-bottom:12px;}
+.setup-field label{display:block;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.8px;color:var(--text-muted);margin-bottom:5px;}
+.setup-field input{width:100%;padding:10px 14px;border-radius:10px;border:1px solid var(--border);background:var(--card);color:var(--text);font-family:'DM Sans',sans-serif;font-size:14px;outline:none;transition:all .25s;}
+.setup-field input:focus{border-color:var(--warn);box-shadow:0 0 0 3px var(--warn-glow);}
+.setup-btns{display:flex;gap:10px;margin-top:4px;}
+.setup-btn{padding:10px 20px;border:none;border-radius:10px;background:var(--warn);color:#fff;font-family:'DM Sans',sans-serif;font-size:14px;font-weight:700;cursor:pointer;transition:all .25s;}
+.setup-btn:hover{opacity:.9;}
+.setup-skip{background:none;border:none;color:var(--text-muted);font-size:13px;cursor:pointer;text-decoration:underline;font-family:'DM Sans',sans-serif;}
+.sync-bar{display:flex;align-items:center;gap:8px;padding:8px 14px;border-radius:50px;font-size:12px;font-weight:600;cursor:pointer;transition:all .25s;user-select:none;}
+.sync-bar.offline{background:rgba(220,38,38,0.08);color:var(--accent);}
+.sync-bar.online{background:var(--success-glow);color:var(--success);}
+.sync-bar i{font-size:13px;}
+.sync-dot{width:6px;height:6px;border-radius:50%;background:currentColor;animation:blink 2s infinite;}
 .topnav{position:sticky;top:0;z-index:100;background:var(--bg);border-bottom:1px solid var(--border);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);transition:background .4s;}
 body.dark .topnav{background:rgba(10,10,10,.88);}
 .topnav-inner{max-width:1080px;margin:0 auto;padding:14px 20px;display:flex;align-items:center;justify-content:space-between;}
 .logo{font-family:'Playfair Display',serif;font-weight:700;font-style:italic;font-size:20px;letter-spacing:-.3px;display:flex;align-items:center;gap:10px;white-space:nowrap;}
 .logo-dot{width:10px;height:10px;border-radius:50%;background:var(--primary);flex-shrink:0;animation:pulse-dot 2s ease infinite;}
 .nav-right{display:flex;align-items:center;gap:10px;}
-.visitor-badge{display:flex;align-items:center;gap:8px;font-size:14px;font-weight:600;color:var(--text-muted);background:var(--bg-secondary);padding:8px 14px;border-radius:50px;cursor:pointer;transition:all .2s;}
-.visitor-badge:hover{background:var(--primary-glow);color:var(--primary);}
-.visitor-dot{width:8px;height:8px;border-radius:50%;background:#16a34a;animation:blink 1.5s infinite;}
-.user-badge{display:flex;align-items:center;gap:8px;font-size:14px;font-weight:600;color:var(--text);background:var(--bg-secondary);padding:8px 14px;border-radius:50px;cursor:pointer;transition:all .2s;}
-.user-badge:hover{background:var(--primary-glow);color:var(--primary);}
-.user-badge i{font-size:14px;}
-.user-badge.admin-badge{background:var(--admin-glow);color:var(--admin);border:1px solid rgba(124,58,237,0.2);}
-.user-badge-avatar{width:24px;height:24px;border-radius:50%;object-fit:cover;border:1.5px solid var(--border);display:none;}
-.user-badge-avatar.visible{display:inline-block;}
-.user-badge .fa-user{display:inline;}
-.user-badge.has-avatar .fa-user{display:none;}
 .nav-actions{display:flex;gap:6px;}
 .nav-btn{height:38px;border:none;border-radius:50%;background:var(--bg-secondary);color:var(--text);cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:14px;transition:all .2s;padding:0 12px;gap:6px;}
 .nav-btn:hover{background:var(--primary-glow);color:var(--primary);transform:scale(1.06);}
 .nav-btn:active{transform:scale(.94);}
 .nav-btn .lang-label{font-weight:700;font-size:12px;letter-spacing:.5px;}
-
-.profile-backdrop{position:fixed;inset:0;background:rgba(0,0,0,.5);z-index:500;display:none;align-items:center;justify-content:center;backdrop-filter:blur(4px);-webkit-backdrop-filter:blur(4px);}
-.profile-backdrop.show{display:flex;animation:fadeIn .2s ease;}
-.profile-panel{background:var(--card);border-radius:24px;max-width:480px;width:100%;max-height:88vh;overflow-y:auto;animation:modalSlide .35s var(--ease);box-shadow:var(--shadow-lg);}
-.profile-header-area{position:relative;padding:48px 28px 24px;text-align:center;background:linear-gradient(135deg,var(--primary-glow),transparent);}
-.profile-close{position:absolute;top:14px;right:14px;width:34px;height:34px;border:none;border-radius:50%;background:var(--bg-secondary);color:var(--text-muted);font-size:20px;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all .2s;z-index:1;}
-.profile-close:hover{background:var(--border);color:var(--text);}
-.profile-avatar-wrap{position:relative;width:100px;height:100px;margin:0 auto 16px;cursor:pointer;}
-.profile-avatar-img{width:100px;height:100px;border-radius:50%;object-fit:cover;border:3px solid var(--card);box-shadow:0 4px 16px rgba(0,0,0,.12);transition:transform .3s;}
-.profile-avatar-wrap:hover .profile-avatar-img{transform:scale(1.05);}
-.profile-avatar-placeholder{width:100px;height:100px;border-radius:50%;background:var(--primary-glow);display:flex;align-items:center;justify-content:center;font-size:40px;font-weight:700;color:var(--primary);border:3px solid var(--card);box-shadow:0 4px 16px rgba(0,0,0,.12);transition:transform .3s;}
-.profile-avatar-wrap:hover .profile-avatar-placeholder{transform:scale(1.05);}
-.profile-avatar-overlay{position:absolute;inset:0;border-radius:50%;background:rgba(0,0,0,.45);display:flex;align-items:center;justify-content:center;opacity:0;transition:opacity .25s;color:#fff;font-size:22px;}
-.profile-avatar-wrap:hover .profile-avatar-overlay{opacity:1;}
-.profile-username{font-family:'Playfair Display',serif;font-size:22px;font-weight:700;margin-bottom:4px;}
-.profile-bio{font-size:15px;color:var(--text-muted);line-height:1.5;margin-bottom:6px;max-width:320px;margin-left:auto;margin-right:auto;}
-.profile-joined{font-size:13px;color:var(--text-muted);opacity:.6;}
-.profile-stats{display:flex;justify-content:center;gap:40px;padding:20px 28px;border-top:1px solid var(--border);border-bottom:1px solid var(--border);}
-.profile-stat{text-align:center;}
-.profile-stat-num{font-size:24px;font-weight:700;color:var(--text);}
-.profile-stat-label{font-size:12px;font-weight:600;text-transform:uppercase;letter-spacing:.5px;color:var(--text-muted);margin-top:2px;}
-.profile-section{padding:20px 28px;}
-.profile-section-title{font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:var(--text-muted);margin-bottom:14px;}
-.profile-field{margin-bottom:14px;}
-.profile-field label{display:block;font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.8px;color:var(--text-muted);margin-bottom:6px;}
-.profile-field input,.profile-field textarea{width:100%;padding:12px 14px;border-radius:12px;border:1px solid var(--border);background:var(--bg-secondary);color:var(--text);font-family:'DM Sans',sans-serif;font-size:16px;outline:none;transition:all .25s;-webkit-appearance:none;}
-.profile-field textarea{resize:vertical;min-height:70px;line-height:1.5;}
-.profile-field input:focus,.profile-field textarea:focus{border-color:var(--primary);box-shadow:0 0 0 3px var(--primary-glow);}
-.profile-save-btn{width:100%;padding:14px;border:none;border-radius:14px;background:var(--primary);color:#fff;font-family:'DM Sans',sans-serif;font-size:15px;font-weight:700;cursor:pointer;transition:all .25s;letter-spacing:.3px;margin-top:6px;}
-.profile-save-btn:hover{background:var(--accent);transform:translateY(-1px);}
-.profile-save-btn:active{transform:scale(.98);}
-.profile-logout{width:100%;padding:14px;border:none;border-radius:14px;background:var(--bg-secondary);color:var(--accent);font-family:'DM Sans',sans-serif;font-size:15px;font-weight:700;cursor:pointer;transition:all .25s;margin-top:10px;}
-.profile-logout:hover{background:rgba(220,38,38,.1);}
-
-.admin-panel-backdrop{position:fixed;inset:0;background:rgba(0,0,0,.5);z-index:500;display:none;align-items:center;justify-content:center;backdrop-filter:blur(4px);-webkit-backdrop-filter:blur(4px);}
-.admin-panel-backdrop.show{display:flex;animation:fadeIn .2s ease;}
-.admin-panel{background:var(--card);border-radius:24px;max-width:480px;width:100%;max-height:82vh;overflow-y:auto;animation:modalSlide .35s var(--ease);box-shadow:var(--shadow-lg);}
-.admin-header{padding:20px 24px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--border);position:sticky;top:0;background:var(--card);z-index:1;border-radius:24px 24px 0 0;}
-.admin-title{font-weight:700;font-size:17px;display:flex;align-items:center;gap:10px;color:var(--admin);}
-.admin-close{width:34px;height:34px;border:none;border-radius:50%;background:var(--bg-secondary);color:var(--text-muted);font-size:20px;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all .2s;}
-.admin-close:hover{background:var(--border);color:var(--text);}
-.admin-section{padding:18px 24px;}
-.admin-section-title{font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:var(--admin);margin-bottom:14px;display:flex;align-items:center;gap:8px;}
-.admin-section-title i{font-size:13px;}
-.admin-user-row{display:flex;align-items:center;gap:12px;padding:12px 0;border-bottom:1px solid var(--border);}
-.admin-user-row:last-child{border-bottom:none;}
-.admin-user-avatar{width:36px;height:36px;border-radius:50%;background:var(--primary-glow);display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:700;color:var(--primary);flex-shrink:0;overflow:hidden;}
-.admin-user-avatar img{width:100%;height:100%;object-fit:cover;}
-.admin-user-avatar.banned-avatar{background:rgba(220,38,38,0.12);color:var(--accent);}
-.admin-user-info{flex:1;min-width:0;}
-.admin-user-name{font-size:14px;font-weight:700;display:flex;align-items:center;gap:8px;}
-.admin-user-name .admin-tag{font-size:10px;background:var(--admin);color:#fff;padding:2px 7px;border-radius:4px;font-weight:700;letter-spacing:.3px;text-transform:uppercase;}
-.admin-user-name .banned-tag{font-size:10px;background:var(--accent);color:#fff;padding:2px 7px;border-radius:4px;font-weight:700;}
-.admin-user-time{font-size:12px;color:var(--text-muted);opacity:.7;}
-.admin-user-actions{display:flex;gap:8px;}
-.admin-btn-sm{width:32px;height:32px;border:none;border-radius:8px;background:var(--bg-secondary);color:var(--text-muted);font-size:12px;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all .2s;}
-.admin-btn-sm.ban-btn:hover{background:rgba(220,38,38,0.12);color:var(--accent);}
-.admin-btn-sm.unban-btn:hover{background:rgba(22,163,74,0.12);color:#16a34a;}
-.admin-empty{font-size:14px;color:var(--text-muted);text-align:center;padding:16px 0;}
-
+.user-badge{display:flex;align-items:center;gap:8px;font-size:14px;font-weight:600;color:var(--text);background:var(--bg-secondary);padding:8px 14px;border-radius:50px;cursor:pointer;transition:all .2s;}
+.user-badge:hover{background:var(--primary-glow);color:var(--primary);}
+.user-badge.admin-badge{background:var(--admin-glow);color:var(--admin);border:1px solid rgba(124,58,237,0.2);}
+.user-badge-avatar{width:24px;height:24px;border-radius:50%;object-fit:cover;border:1.5px solid var(--border);display:none;}
+.user-badge-avatar.visible{display:inline-block;}
 .container{max-width:1080px;margin:0 auto;padding:0 20px 120px;}
 .stories{display:flex;gap:16px;padding:20px 0;overflow-x:auto;scrollbar-width:none;-ms-overflow-style:none;-webkit-overflow-scrolling:touch;}
 .stories::-webkit-scrollbar{display:none;}
@@ -181,7 +128,7 @@ body.dark .topnav{background:rgba(10,10,10,.88);}
 .grid-gallery-dot{width:6px;height:6px;border-radius:50%;background:rgba(255,255,255,.7);}
 .grid-placeholder{width:100%;height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;color:var(--text-muted);font-size:13px;font-weight:600;text-align:center;padding:10px;}
 .grid-placeholder i{font-size:28px;opacity:.4;}
-.list-card{background:var(--card);border-radius:var(--radius);margin-bottom:12px;box-shadow:var(--shadow);overflow:hidden;cursor:pointer;transition:transform .2s,box-shadow .2s;}
+.list-card{background:var(--card);border-radius:var(--radius);margin-bottom:12px;box-shadow:var(--shadow);overflow:hidden;cursor:pointer;transition:transform .2s,box-shadow .2s;position:relative;}
 .list-card:active{transform:scale(.985);}
 @media(hover:hover){.list-card:hover{transform:translateY(-2px);box-shadow:var(--shadow-lg);}}
 .list-inner{display:flex;}
@@ -198,29 +145,28 @@ body.dark .topnav{background:rgba(10,10,10,.88);}
 .empty-state i{font-size:56px;margin-bottom:16px;opacity:.25;display:block;}
 .empty-state p{font-size:18px;font-weight:500;}
 .empty-state span{font-size:15px;display:block;margin-top:8px;opacity:.7;}
-
 .modal-backdrop{position:fixed;inset:0;background:rgba(0,0,0,.7);z-index:200;display:none;align-items:center;justify-content:center;padding:16px;backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);}
 .modal-backdrop.show{display:flex;animation:fadeIn .2s ease;}
 .modal{background:var(--card);border-radius:24px;max-width:960px;width:100%;max-height:92vh;overflow:hidden;display:flex;animation:modalSlide .35s var(--ease);box-shadow:0 25px 60px rgba(0,0,0,.3);}
 .modal-image{width:50%;min-height:400px;background:var(--bg-secondary);flex-shrink:0;position:relative;overflow:hidden;}
 .modal-gallery-main{width:100%;height:100%;object-fit:cover;transition:opacity .3s;}
-.modal-gallery-main-placeholder{width:100%;height:100%;display:flex;align-items:center;justify-content:center;font-size:64px;opacity:.2;background:linear-gradient(135deg,var(--bg-secondary),var(--card));}
-.modal-gallery-nav{position:absolute;top:50%;transform:translateY(-50%);width:38px;height:38px;border:none;border-radius:50%;background:rgba(0,0,0,.45);color:#fff;font-size:16px;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all .2s;opacity:0;z-index:2;backdrop-filter:blur(4px);}
+.modal-gallery-main-placeholder{width:100%;height:100%;display:flex;align-items:center;justify-content:center;font-size:64px;opacity:.2;}
+.modal-gallery-nav{position:absolute;top:50%;transform:translateY(-50%);width:38px;height:38px;border:none;border-radius:50%;background:rgba(0,0,0,.45);color:#fff;font-size:16px;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all .2s;opacity:0;z-index:2;}
 .modal-image:hover .modal-gallery-nav,.modal-gallery-nav.visible{opacity:1;}
 .modal-gallery-nav:hover{background:rgba(0,0,0,.7);transform:translateY(-50%) scale(1.1);}
-.modal-gallery-nav:active{transform:translateY(-50%) scale(.95);}
 .modal-gallery-prev{left:10px;}
 .modal-gallery-next{right:10px;}
 .modal-gallery-dots{position:absolute;bottom:14px;left:50%;transform:translateX(-50%);display:flex;gap:8px;z-index:2;}
 .modal-gallery-dot{width:8px;height:8px;border-radius:50%;background:rgba(255,255,255,.4);cursor:pointer;transition:all .25s;border:none;padding:0;}
 .modal-gallery-dot.active{background:#fff;transform:scale(1.3);}
-.modal-gallery-count{position:absolute;top:14px;right:14px;background:rgba(0,0,0,.45);color:#fff;font-size:13px;font-weight:700;padding:4px 10px;border-radius:8px;z-index:2;backdrop-filter:blur(4px);}
+.modal-gallery-count{position:absolute;top:14px;right:14px;background:rgba(0,0,0,.45);color:#fff;font-size:13px;font-weight:700;padding:4px 10px;border-radius:8px;z-index:2;}
 .modal-content{flex:1;display:flex;flex-direction:column;overflow:hidden;min-width:0;}
 .modal-header{padding:16px 20px;display:flex;align-items:center;gap:12px;border-bottom:1px solid var(--border);flex-shrink:0;}
-.modal-avatar{width:42px;height:42px;border-radius:50%;background:var(--primary-glow);display:flex;align-items:center;justify-content:center;font-size:22px;flex-shrink:0;line-height:1;overflow:hidden;}
+.modal-avatar{width:42px;height:42px;border-radius:50%;background:var(--primary-glow);display:flex;align-items:center;justify-content:center;font-size:22px;flex-shrink:0;line-height:1;overflow:hidden;cursor:pointer;}
 .modal-avatar img{width:100%;height:100%;object-fit:cover;}
 .modal-user-info{flex:1;min-width:0;}
-.modal-username{font-weight:700;font-size:15px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+.modal-username{font-weight:700;font-size:15px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;cursor:pointer;}
+.modal-username:hover{color:var(--primary);}
 .modal-category-badge{font-size:13px;color:var(--primary);font-weight:600;}
 .modal-close{width:36px;height:36px;border:none;border-radius:50%;background:transparent;color:var(--text-muted);font-size:24px;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all .2s;flex-shrink:0;}
 .modal-close:hover{background:var(--bg-secondary);color:var(--text);}
@@ -247,8 +193,6 @@ body.dark .topnav{background:rgba(10,10,10,.88);}
 .modal-action-spacer{flex:1;}
 .modal-action-btn.delete-btn{color:var(--text-muted);font-size:20px;}
 .modal-action-btn.delete-btn:hover{color:var(--accent);}
-.modal-share-btn{color:var(--text);font-size:22px;}
-.modal-share-btn:hover{color:var(--primary);}
 .share-bar{position:fixed;bottom:100px;left:50%;transform:translateX(-50%) translateY(20px);background:var(--card);border:1px solid var(--border);border-radius:18px;padding:10px 14px;display:flex;gap:8px;z-index:600;opacity:0;transition:all .3s var(--ease);pointer-events:none;box-shadow:var(--shadow-lg);}
 .share-bar.show{opacity:1;transform:translateX(-50%) translateY(0);pointer-events:auto;}
 .share-opt{width:48px;height:48px;border:none;border-radius:14px;background:var(--bg-secondary);color:var(--text);font-size:20px;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all .2s;}
@@ -261,10 +205,11 @@ body.dark .topnav{background:rgba(10,10,10,.88);}
 .comments-section{border-top:1px solid var(--border);padding:14px 20px;flex-shrink:0;}
 .comments-list{max-height:220px;overflow-y:auto;margin-bottom:10px;-webkit-overflow-scrolling:touch;}
 .comment-item{display:flex;gap:10px;margin-bottom:12px;animation:revealUp .3s var(--ease) both;}
-.comment-avatar{width:32px;height:32px;border-radius:50%;background:var(--primary-glow);display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:700;color:var(--primary);flex-shrink:0;overflow:hidden;}
+.comment-avatar{width:32px;height:32px;border-radius:50%;background:var(--primary-glow);display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:700;color:var(--primary);flex-shrink:0;overflow:hidden;cursor:pointer;}
 .comment-avatar img{width:100%;height:100%;object-fit:cover;}
 .comment-body{flex:1;min-width:0;}
-.comment-name{font-size:14px;font-weight:700;}
+.comment-name{font-size:14px;font-weight:700;cursor:pointer;}
+.comment-name:hover{color:var(--primary);}
 .comment-text{font-size:14px;color:var(--text-muted);line-height:1.5;word-break:break-word;}
 .comment-time{font-size:12px;color:var(--text-muted);opacity:.6;margin-top:2px;}
 .no-comments{font-size:14px;color:var(--text-muted);text-align:center;padding:18px 0;}
@@ -281,7 +226,6 @@ body.dark .topnav{background:rgba(10,10,10,.88);}
 .emoji-grid{display:grid;grid-template-columns:repeat(7,1fr);gap:3px;text-align:center;}
 .emoji-grid span{font-size:22px;cursor:pointer;padding:5px;border-radius:8px;transition:background .15s;}
 .emoji-grid span:hover{background:var(--bg-secondary);}
-
 .add-modal-backdrop{position:fixed;inset:0;background:rgba(0,0,0,.7);z-index:300;display:none;align-items:flex-end;justify-content:center;backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);}
 .add-modal-backdrop.show{display:flex;animation:fadeIn .2s ease;}
 .add-modal{background:var(--card);border-radius:28px 28px 0 0;width:100%;max-width:560px;max-height:92vh;overflow-y:auto;animation:slideUp .4s var(--ease);padding-bottom:max(env(safe-area-inset-bottom,0px),20px);}
@@ -299,21 +243,103 @@ body.dark .topnav{background:rgba(10,10,10,.88);}
 .form-select{cursor:pointer;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' fill='%236b7280' viewBox='0 0 16 16'%3E%3Cpath d='M8 11L3 6h10z'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 14px center;padding-right:36px;}
 .gallery-upload-area{display:flex;gap:10px;flex-wrap:wrap;}
 .gallery-upload-btn{width:88px;height:88px;border:2px dashed var(--border);border-radius:14px;display:flex;flex-direction:column;align-items:center;justify-content:center;cursor:pointer;transition:all .25s;color:var(--text-muted);font-size:12px;gap:5px;flex-shrink:0;}
-.gallery-upload-btn:hover,.gallery-upload-btn:active{border-color:var(--primary);color:var(--primary);background:var(--primary-glow);}
+.gallery-upload-btn:hover{border-color:var(--primary);color:var(--primary);background:var(--primary-glow);}
 .gallery-upload-btn i{font-size:22px;}
 .gallery-thumb-wrap{position:relative;width:88px;height:88px;flex-shrink:0;animation:revealScale .3s var(--ease) both;}
 .gallery-thumb-wrap img{width:100%;height:100%;border-radius:14px;object-fit:cover;}
 .gallery-thumb-remove{position:absolute;top:-7px;right:-7px;width:22px;height:22px;border-radius:50%;background:var(--accent);color:#fff;border:none;font-size:11px;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:transform .2s;box-shadow:0 2px 6px rgba(0,0,0,.2);}
 .gallery-thumb-remove:hover{transform:scale(1.15);}
-.gallery-thumb-remove:active{transform:scale(.9);}
-.gallery-thumb-primary{position:absolute;bottom:5px;left:5px;background:var(--primary);color:#fff;font-size:9px;font-weight:700;padding:2px 6px;border-radius:5px;letter-spacing:.3px;}
-.form-submit{width:100%;padding:15px;border:none;border-radius:14px;background:var(--primary);color:#fff;font-family:'DM Sans',sans-serif;font-size:16px;font-weight:700;cursor:pointer;transition:all .25s;letter-spacing:.3px;}
+.gallery-thumb-primary{position:absolute;bottom:5px;left:5px;background:var(--primary);color:#fff;font-size:9px;font-weight:700;padding:2px 6px;border-radius:5px;}
+.form-submit{width:100%;padding:15px;border:none;border-radius:14px;background:var(--primary);color:#fff;font-family:'DM Sans',sans-serif;font-size:16px;font-weight:700;cursor:pointer;transition:all .25s;}
 .form-submit:hover{background:var(--accent);transform:translateY(-1px);box-shadow:0 6px 20px var(--primary-glow);}
-.form-submit:active{transform:translateY(0) scale(.98);}
-.fab{position:fixed;bottom:28px;right:28px;width:56px;height:56px;border-radius:50%;background:var(--primary);color:#fff;border:none;font-size:24px;cursor:pointer;box-shadow:0 4px 16px var(--primary-glow);z-index:150;transition:all .3s;display:flex;align-items:center;justify-content:center;}
+.form-submit:active{transform:scale(.98);}
+.profile-backdrop{position:fixed;inset:0;background:rgba(0,0,0,.5);z-index:500;display:none;align-items:center;justify-content:center;backdrop-filter:blur(4px);}
+.profile-backdrop.show{display:flex;animation:fadeIn .2s ease;}
+.profile-panel{background:var(--card);border-radius:24px;max-width:480px;width:100%;max-height:88vh;overflow-y:auto;animation:modalSlide .35s var(--ease);box-shadow:var(--shadow-lg);}
+.profile-header-area{position:relative;padding:48px 28px 24px;text-align:center;background:linear-gradient(135deg,var(--primary-glow),transparent);}
+.profile-close{position:absolute;top:14px;right:14px;width:34px;height:34px;border:none;border-radius:50%;background:var(--bg-secondary);color:var(--text-muted);font-size:20px;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all .2s;z-index:1;}
+.profile-close:hover{background:var(--border);color:var(--text);}
+.profile-avatar-wrap{position:relative;width:100px;height:100px;margin:0 auto 16px;cursor:pointer;}
+.profile-avatar-img{width:100px;height:100px;border-radius:50%;object-fit:cover;border:3px solid var(--card);box-shadow:0 4px 16px rgba(0,0,0,.12);}
+.profile-avatar-placeholder{width:100px;height:100px;border-radius:50%;background:var(--primary-glow);display:flex;align-items:center;justify-content:center;font-size:40px;font-weight:700;color:var(--primary);border:3px solid var(--card);box-shadow:0 4px 16px rgba(0,0,0,.12);}
+.profile-avatar-overlay{position:absolute;inset:0;border-radius:50%;background:rgba(0,0,0,.45);display:flex;align-items:center;justify-content:center;opacity:0;transition:opacity .25s;color:#fff;font-size:22px;}
+.profile-avatar-wrap:hover .profile-avatar-overlay{opacity:1;}
+.profile-avatar-wrap.no-edit .profile-avatar-overlay{display:none;cursor:default;}
+.profile-username{font-family:'Playfair Display',serif;font-size:22px;font-weight:700;margin-bottom:4px;}
+.profile-bio{font-size:15px;color:var(--text-muted);line-height:1.5;margin-bottom:6px;max-width:320px;margin-left:auto;margin-right:auto;}
+.profile-joined{font-size:13px;color:var(--text-muted);opacity:.6;}
+.profile-stats{display:flex;justify-content:center;gap:40px;padding:20px 28px;border-top:1px solid var(--border);border-bottom:1px solid var(--border);}
+.profile-stat{text-align:center;}
+.profile-stat-num{font-size:24px;font-weight:700;color:var(--text);}
+.profile-stat-label{font-size:12px;font-weight:600;text-transform:uppercase;letter-spacing:.5px;color:var(--text-muted);margin-top:2px;}
+.profile-section{padding:20px 28px;}
+.profile-section-title{font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:var(--text-muted);margin-bottom:14px;}
+.profile-field{margin-bottom:14px;}
+.profile-field label{display:block;font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.8px;color:var(--text-muted);margin-bottom:6px;}
+.profile-field input,.profile-field textarea{width:100%;padding:12px 14px;border-radius:12px;border:1px solid var(--border);background:var(--bg-secondary);color:var(--text);font-family:'DM Sans',sans-serif;font-size:16px;outline:none;transition:all .25s;-webkit-appearance:none;}
+.profile-field textarea{resize:vertical;min-height:70px;line-height:1.5;}
+.profile-field input:focus,.profile-field textarea:focus{border-color:var(--primary);box-shadow:0 0 0 3px var(--primary-glow);}
+.profile-save-btn{width:100%;padding:14px;border:none;border-radius:14px;background:var(--primary);color:#fff;font-family:'DM Sans',sans-serif;font-size:15px;font-weight:700;cursor:pointer;transition:all .25s;margin-top:6px;}
+.profile-save-btn:hover{background:var(--accent);transform:translateY(-1px);}
+.profile-save-btn:active{transform:scale(.98);}
+.profile-logout{width:100%;padding:14px;border:none;border-radius:14px;background:var(--bg-secondary);color:var(--accent);font-family:'DM Sans',sans-serif;font-size:15px;font-weight:700;cursor:pointer;transition:all .25s;margin-top:10px;}
+.profile-logout:hover{background:rgba(220,38,38,.1);}
+.profile-mini-card{display:flex;gap:10px;padding:10px 0;border-bottom:1px solid var(--border);cursor:pointer;transition:opacity .2s;}
+.profile-mini-card:hover{opacity:.7;}
+.profile-mini-card:last-child{border-bottom:none;}
+.profile-mini-img{width:50px;height:50px;border-radius:10px;object-fit:cover;flex-shrink:0;}
+.profile-mini-img-ph{width:50px;height:50px;border-radius:10px;background:var(--bg-secondary);display:flex;align-items:center;justify-content:center;font-size:20px;flex-shrink:0;}
+.profile-mini-info{flex:1;min-width:0;}
+.profile-mini-title{font-size:14px;font-weight:700;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+.profile-mini-cat{font-size:12px;color:var(--primary);font-weight:600;}
+.profile-mini-stats{font-size:12px;color:var(--text-muted);margin-top:2px;}
+.profile-edit-section{border-top:1px solid var(--border);padding-top:20px;margin-top:20px;}
+.admin-panel-backdrop{position:fixed;inset:0;background:rgba(0,0,0,.5);z-index:500;display:none;align-items:center;justify-content:center;backdrop-filter:blur(4px);}
+.admin-panel-backdrop.show{display:flex;animation:fadeIn .2s ease;}
+.admin-panel{background:var(--card);border-radius:24px;max-width:480px;width:100%;max-height:82vh;overflow-y:auto;animation:modalSlide .35s var(--ease);box-shadow:var(--shadow-lg);}
+.admin-header{padding:20px 24px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--border);position:sticky;top:0;background:var(--card);z-index:1;border-radius:24px 24px 0 0;}
+.admin-title{font-weight:700;font-size:17px;display:flex;align-items:center;gap:10px;color:var(--admin);}
+.admin-close{width:34px;height:34px;border:none;border-radius:50%;background:var(--bg-secondary);color:var(--text-muted);font-size:20px;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all .2s;}
+.admin-close:hover{background:var(--border);color:var(--text);}
+.admin-section{padding:18px 24px;}
+.admin-section-title{font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:var(--admin);margin-bottom:14px;display:flex;align-items:center;gap:8px;}
+.admin-section-title i{font-size:13px;}
+.admin-user-row{display:flex;align-items:center;gap:12px;padding:12px 0;border-bottom:1px solid var(--border);}
+.admin-user-row:last-child{border-bottom:none;}
+.admin-user-avatar{width:36px;height:36px;border-radius:50%;background:var(--primary-glow);display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:700;color:var(--primary);flex-shrink:0;overflow:hidden;cursor:pointer;}
+.admin-user-avatar img{width:100%;height:100%;object-fit:cover;}
+.admin-user-avatar.banned-avatar{background:rgba(220,38,38,0.12);color:var(--accent);}
+.admin-user-info{flex:1;min-width:0;cursor:pointer;}
+.admin-user-name{font-size:14px;font-weight:700;display:flex;align-items:center;gap:8px;flex-wrap:wrap;}
+.admin-user-name .tag{font-size:9px;color:#fff;padding:2px 6px;border-radius:4px;font-weight:700;letter-spacing:.3px;}
+.admin-user-name .admin-tag{background:var(--admin);}
+.admin-user-name .banned-tag{background:var(--accent);}
+.admin-user-name .online-tag{background:var(--success);animation:blink 2s infinite;}
+.admin-user-name .new-tag{background:var(--warn);}
+.admin-user-time{font-size:12px;color:var(--text-muted);opacity:.7;}
+.admin-user-actions{display:flex;gap:8px;}
+.admin-btn-sm{width:32px;height:32px;border:none;border-radius:8px;background:var(--bg-secondary);color:var(--text-muted);font-size:12px;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all .2s;}
+.admin-btn-sm.ban-btn:hover{background:rgba(220,38,38,0.12);color:var(--accent);}
+.admin-btn-sm.unban-btn:hover{background:rgba(22,163,74,0.12);color:#16a34a;}
+.admin-btn-sm.view-btn:hover{background:var(--primary-glow);color:var(--primary);}
+.admin-empty{font-size:14px;color:var(--text-muted);text-align:center;padding:16px 0;}
+.notif-toast{position:fixed;top:68px;left:50%;transform:translateX(-50%) translateY(-20px);background:var(--card);border:1px solid var(--border);border-radius:16px;padding:12px 18px;display:flex;align-items:center;gap:12px;z-index:600;opacity:0;pointer-events:none;transition:all .35s var(--ease);box-shadow:var(--shadow-lg);max-width:90vw;min-width:260px;}
+.notif-toast.show{opacity:1;transform:translateX(-50%) translateY(0);pointer-events:auto;animation:notifSlide .4s var(--ease) both;}
+.notif-toast.admin-notif{border-left:3px solid var(--admin);}
+.notif-avatar{width:36px;height:36px;border-radius:50%;background:var(--primary-glow);display:flex;align-items:center;justify-content:center;font-size:16px;font-weight:700;color:var(--primary);flex-shrink:0;overflow:hidden;}
+.notif-avatar img{width:100%;height:100%;object-fit:cover;}
+.notif-body{flex:1;min-width:0;}
+.notif-title{font-size:13px;font-weight:700;color:var(--text);}
+.notif-desc{font-size:12px;color:var(--text-muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+.notif-close{border:none;background:none;color:var(--text-muted);font-size:14px;cursor:pointer;padding:4px;flex-shrink:0;}
+.notif-bell{position:fixed;top:68px;right:20px;width:44px;height:44px;border-radius:50%;background:var(--admin);color:#fff;border:none;font-size:18px;cursor:pointer;display:none;align-items:center;justify-content:center;z-index:550;box-shadow:var(--shadow-lg);transition:transform .2s;}
+.notif-bell:hover{transform:scale(1.1);}
+.notif-bell:active{transform:scale(.95);}
+.notif-bell .notif-badge{position:absolute;top:-2px;right:-2px;min-width:18px;height:18px;border-radius:50px;background:var(--accent);color:#fff;font-size:10px;font-weight:700;display:flex;align-items:center;justify-content:center;padding:0 4px;border:2px solid var(--card);}
+.fab{position:fixed;bottom:28px;right:28px;width:56px;height:56px;border-radius:50%;background:var(--primary);color:#fff;border:none;font-size:24px;cursor:pointer;box-shadow:0 4px 16px var(--primary-glow);z-index:150;transition:all .3s;display:none;align-items:center;justify-content:center;}
 .fab:hover{transform:scale(1.1) rotate(90deg);box-shadow:0 6px 24px var(--primary-glow);}
 .fab:active{transform:scale(.95);}
-.save-indicator{position:fixed;top:68px;right:20px;background:#16a34a;color:#fff;padding:10px 18px;border-radius:50px;font-size:14px;font-weight:600;z-index:500;display:flex;align-items:center;gap:8px;transform:translateX(120%);transition:transform .35s var(--ease);box-shadow:0 4px 12px rgba(22,163,74,.3);}
+.save-indicator{position:fixed;top:68px;right:20px;background:var(--success);color:#fff;padding:10px 18px;border-radius:50px;font-size:14px;font-weight:600;z-index:500;display:flex;align-items:center;gap:8px;transform:translateX(120%);transition:transform .35s var(--ease);box-shadow:0 4px 12px rgba(22,163,74,.3);}
 .save-indicator.show{transform:translateX(0);}
 .toast{position:fixed;bottom:100px;left:50%;transform:translateX(-50%) translateY(20px);background:var(--text);color:var(--bg);padding:12px 24px;border-radius:50px;font-size:15px;font-weight:600;z-index:500;opacity:0;transition:all .3s var(--ease);pointer-events:none;white-space:nowrap;max-width:90vw;text-overflow:ellipsis;overflow:hidden;}
 .toast.show{opacity:1;transform:translateX(-50%) translateY(0);}
@@ -321,12 +347,8 @@ body.dark .topnav{background:rgba(10,10,10,.88);}
 .lang-loading.show{display:block;animation:fadeIn .2s ease;}
 .lang-loading .spinner{width:40px;height:40px;border:3px solid var(--border);border-top-color:var(--primary);border-radius:50%;animation:spin .8s linear infinite;margin:0 auto 18px;}
 .lang-loading p{font-size:16px;font-weight:600;color:var(--text);}
-.lang-badge{display:inline-flex;align-items:center;gap:4px;background:var(--primary-glow);color:var(--primary);font-size:11px;font-weight:700;padding:3px 8px;border-radius:6px;letter-spacing:.3px;margin-left:8px;}
-
-@media(min-width:701px) and (max-width:1024px){.recipe-grid{grid-template-columns:repeat(3,1fr);gap:5px;}.modal-image{min-height:380px;}}
-@media(min-width:1025px){.recipe-grid{grid-template-columns:repeat(4,1fr);gap:6px;}.modal-image{min-height:480px;}.stories{gap:20px;}.story-ring{width:74px;height:74px;}.story-ring-inner{font-size:28px;}.story-label{font-size:13px;max-width:72px;}.fav-card{width:180px;}.fav-card-img,.fav-card-placeholder{height:180px;}.list-thumb,.list-thumb-placeholder{width:130px;height:130px;}.container{padding:0 24px 120px;}.topnav-inner{padding:16px 24px;}}
-@media(max-width:700px){body{font-size:15px;}.logo{font-size:16px;}.logo-dot{width:8px;height:8px;}.visitor-badge{display:none;}.user-badge{font-size:12px;padding:6px 10px;}.user-badge span{display:none;}.user-badge-avatar{width:22px;height:22px;}.story-ring{width:58px;height:58px;}.story-ring-inner{font-size:22px;}.story-label{font-size:10px;max-width:52px;}.stories{gap:12px;padding:14px 0;}.search-input{font-size:15px;padding:12px 14px 12px 40px;}.search-wrap i{font-size:14px;left:14px;}.section-title{font-size:19px;}.section-count{font-size:13px;}.tab{font-size:12px;padding:12px 0;}.fav-card{width:140px;}.fav-card-img,.fav-card-placeholder{height:140px;}.fav-card-title{font-size:13px;}.fav-card-cat{font-size:11px;}.list-thumb,.list-thumb-placeholder{width:100px;height:100px;}.list-title{font-size:14px;}.list-cat{font-size:12px;}.list-desc{font-size:13px;}.list-stats{font-size:11px;gap:10px;}.modal{flex-direction:column;max-height:96vh;border-radius:20px 20px 0 0;margin-top:auto;}.modal-image{width:100%;min-height:240px;max-height:300px;}.modal-content{min-height:0;}.modal-title{font-size:20px;}.modal-avatar{width:36px;height:36px;font-size:18px;}.modal-username{font-size:13px;}.modal-category-badge{font-size:12px;}.modal-ingredients li,.modal-instructions li{font-size:14px;}.modal-stats-bar{font-size:13px;gap:12px;padding:10px 16px;}.modal-footer{padding:10px 16px;}.comments-section{padding:12px 16px;}.comment-name{font-size:13px;}.comment-text{font-size:13px;}.comment-input{font-size:14px;height:36px;}.fab{bottom:20px;right:20px;width:50px;height:50px;font-size:22px;}.nav-btn .lang-label{display:none;}.nav-btn{height:34px;font-size:13px;}.admin-panel,.profile-panel{max-width:96vw;border-radius:20px;}.profile-header-area{padding:36px 20px 20px;}.profile-avatar-wrap{width:86px;height:86px;}.profile-avatar-img{width:86px;height:86px;}.profile-avatar-placeholder{width:86px;height:86px;font-size:34px;}.profile-username{font-size:19px;}.profile-bio{font-size:14px;}.profile-stats{gap:28px;padding:16px 20px;}.profile-stat-num{font-size:20px;}.profile-section{padding:16px 20px;}.profile-field input,.profile-field textarea{font-size:15px;padding:10px 12px;}.profile-save-btn,.profile-logout{font-size:14px;padding:12px;}.add-modal{max-width:100%;border-radius:24px 24px 0 0;}.add-header{font-size:16px;padding:14px 20px;}.add-form{padding:16px 20px 20px;}.form-input,.form-textarea,.form-select{font-size:15px;padding:11px 13px;}.form-label{font-size:11px;}.form-hint{font-size:11px;}.gallery-upload-btn{width:72px;height:72px;font-size:11px;}.gallery-upload-btn i{font-size:18px;}.gallery-thumb-wrap{width:72px;height:72px;}.gallery-thumb-primary{font-size:8px;}.form-submit{font-size:15px;padding:13px;}.share-bar{bottom:80px;padding:8px 10px;}.share-opt{width:42px;height:42px;font-size:18px;}.toast{font-size:14px;bottom:80px;}.save-indicator{font-size:13px;top:62px;right:14px;padding:8px 14px;}.container{padding:0 14px 100px;}.topnav-inner{padding:10px 14px;}.grid-stat{font-size:12px;gap:4px;}.grid-stat i{font-size:13px;}.grid-gallery-dots{bottom:6px;right:6px;}.grid-gallery-dot{width:5px;height:5px;}.list-gallery-badge{font-size:10px;bottom:8px;right:8px;}.lang-badge{font-size:10px;padding:2px 6px;}}
-@media(max-width:360px){.story-ring{width:50px;height:50px;}.story-ring-inner{font-size:18px;}.fav-card{width:126px;}.fav-card-img,.fav-card-placeholder{height:126px;}.gallery-upload-btn{width:64px;height:64px;}.gallery-thumb-wrap{width:64px;height:64px;}}
+@media(min-width:1025px){.recipe-grid{grid-template-columns:repeat(4,1fr);gap:6px;}.modal-image{min-height:480px;}.story-ring{width:74px;height:74px;}.fav-card{width:180px;}.fav-card-img,.fav-card-placeholder{height:180px;}.list-thumb,.list-thumb-placeholder{width:130px;height:130px;}}
+@media(max-width:700px){body{font-size:15px;}.logo{font-size:16px;}.logo-dot{width:8px;height:8px;}.user-badge{font-size:12px;padding:6px 10px;}.user-badge span{display:none;}.user-badge-avatar{width:22px;height:22px;}.story-ring{width:58px;height:58px;}.story-ring-inner{font-size:22px;}.story-label{font-size:10px;max-width:52px;}.stories{gap:12px;padding:14px 0;}.search-input{font-size:15px;padding:12px 14px 12px 40px;}.section-title{font-size:19px;}.tab{font-size:12px;padding:12px 0;}.fav-card{width:140px;}.fav-card-img,.fav-card-placeholder{height:140px;}.fav-card-title{font-size:13px;}.list-thumb,.list-thumb-placeholder{width:100px;height:100px;}.list-title{font-size:14px;}.modal{flex-direction:column;max-height:96vh;border-radius:20px 20px 0 0;margin-top:auto;}.modal-image{width:100%;min-height:240px;max-height:300px;}.modal-title{font-size:20px;}.modal-avatar{width:36px;height:36px;font-size:18px;}.modal-username{font-size:13px;}.modal-ingredients li,.modal-instructions li{font-size:14px;}.modal-stats-bar{font-size:13px;gap:12px;padding:10px 16px;}.modal-footer{padding:10px 16px;}.comments-section{padding:12px 16px;}.comment-input{font-size:14px;height:36px;}.fab{bottom:20px;right:20px;width:50px;height:50px;font-size:22px;}.nav-btn .lang-label{display:none;}.nav-btn{height:34px;font-size:13px;}.admin-panel,.profile-panel{max-width:96vw;border-radius:20px;}.profile-header-area{padding:36px 20px 20px;}.profile-avatar-wrap{width:86px;height:86px;}.profile-avatar-img,.profile-avatar-placeholder{width:86px;height:86px;}.profile-avatar-placeholder{font-size:34px;}.profile-username{font-size:19px;}.profile-stats{gap:28px;padding:16px 20px;}.profile-stat-num{font-size:20px;}.profile-section{padding:16px 20px;}.add-modal{max-width:100%;border-radius:24px 24px 0 0;}.add-header{font-size:16px;padding:14px 20px;}.add-form{padding:16px 20px 20px;}.form-input,.form-textarea,.form-select{font-size:15px;padding:11px 13px;}.gallery-upload-btn{width:72px;height:72px;}.gallery-upload-btn i{font-size:18px;}.gallery-thumb-wrap{width:72px;height:72px;}.share-bar{bottom:80px;}.share-opt{width:42px;height:42px;font-size:18px;}.toast{font-size:14px;bottom:80px;}.save-indicator{font-size:13px;top:62px;right:14px;}.container{padding:0 14px 100px;}.topnav-inner{padding:10px 14px;}.setup-banner{padding:12px 16px;}.notif-toast{top:58px;min-width:220px;padding:10px 14px;}.notif-title{font-size:12px;}.notif-desc{font-size:11px;}.sync-bar{font-size:11px;padding:6px 10px;}.notif-bell{top:58px;right:14px;width:38px;height:38px;font-size:16px;}}
 @media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;transition-duration:.01ms!important;}}
 ::-webkit-scrollbar{width:6px;}::-webkit-scrollbar-track{background:transparent;}::-webkit-scrollbar-thumb{background:var(--border);border-radius:3px;}
 </style>
@@ -355,455 +377,495 @@ body.dark .topnav{background:rgba(10,10,10,.88);}
 </div>
 </div>
 
-<nav class="topnav">
-<div class="topnav-inner">
+<nav class="topnav"><div class="topnav-inner">
     <div class="logo"><span class="logo-dot"></span> NDESANJO FAMILY RECIPES</div>
     <div class="nav-right">
-        <div class="visitor-badge" id="visitorBadge" onclick="openAdminPanel()"><span class="visitor-dot"></span> <span id="visitorCount">1</span> online</div>
-        <div class="user-badge" id="userBadge" onclick="handleUserBadgeClick()">
-            <img class="user-badge-avatar" id="userBadgeAvatar" src="" alt="">
-            <i class="fa-solid fa-user"></i>
-            <span id="userName"></span>
-        </div>
+        <div class="sync-bar offline" id="syncBar" onclick="handleSyncClick()"><span class="sync-dot"></span><i class="fa-solid fa-plug-circle-xmark"></i> <span id="syncLabel">Offline</span></div>
+        <div class="user-badge" id="userBadge" onclick="openProfile(currentUser)" style="display:none;"><img class="user-badge-avatar" id="userBadgeAvatar" src="" alt=""><i class="fa-solid fa-user"></i><span id="userName"></span></div>
         <div class="nav-actions">
             <button class="nav-btn" id="langBtn" onclick="toggleLang()"><i class="fa-solid fa-globe"></i><span class="lang-label" id="langLabel">SW</span></button>
-            <button class="nav-btn" onclick="openAdd()"><i class="fa-solid fa-plus"></i></button>
+            <button class="nav-btn" onclick="openAdd()" id="addNavBtn" style="display:none;"><i class="fa-solid fa-plus"></i></button>
             <button class="nav-btn" onclick="toggleDark()" id="darkBtn"><i class="fa-solid fa-moon"></i></button>
         </div>
     </div>
-</div>
-</nav>
+</div></nav>
 
 <div class="container">
+    <div id="setupBanner" style="display:none;"></div>
     <div class="stories" id="stories"></div>
-    <div class="search-wrap"><input type="text" class="search-input" id="search" oninput="render()"><i class="fa-solid fa-magnifying-glass"></i></div>
+    <div class="search-wrap"><input type="text" class="search-input" id="search" oninput="render()" placeholder="Search recipes..."><i class="fa-solid fa-magnifying-glass"></i></div>
     <div id="favSection" style="display:none;"><div class="section-header"><div class="section-title" id="favTitle"></div><div class="section-count" id="favCount"></div></div><div class="fav-row" id="favRow"></div></div>
     <div class="tabs-bar"><button class="tab active" onclick="setTab('grid',this)"><i class="fa-solid fa-table-cells"></i>&nbsp;<span id="tabGrid">GRID</span></button><button class="tab" onclick="setTab('list',this)"><i class="fa-solid fa-list"></i>&nbsp;<span id="tabList">LIST</span></button></div>
-    <div class="section-header"><div class="section-title" id="sectionTitle"></div><div class="section-count" id="sectionCount"></div></div>
+    <div class="section-header"><div class="section-title" id="sectionTitle">All Recipes</div><div class="section-count" id="sectionCount"></div></div>
     <div id="mainContent"></div>
 </div>
 
-<button class="fab" onclick="openAdd()"><i class="fa-solid fa-plus"></i></button>
+<button class="fab" id="fabBtn" onclick="openAdd()"><i class="fa-solid fa-plus"></i></button>
+<button class="notif-bell" id="notifBell" onclick="showNotifHistory()"><i class="fa-solid fa-bell"></i><span class="notif-badge" id="notifBadge" style="display:none;">0</span></button>
 <div class="lang-loading" id="langLoading"><div class="spinner"></div><p id="langLoadingText">Translating...</p></div>
 
-<div class="admin-panel-backdrop" id="adminBackdrop" onclick="closeAdmin(event)">
-<div class="admin-panel" onclick="event.stopPropagation()">
-    <div class="admin-header"><div class="admin-title"><i class="fa-solid fa-shield-halved"></i> Admin Panel</div><button class="admin-close" onclick="closeAdminForce()">&times;</button></div>
-    <div class="admin-section"><div class="admin-section-title"><i class="fa-solid fa-users"></i> Online Users</div><div id="adminOnlineList"></div></div>
-    <div class="admin-section"><div class="admin-section-title"><i class="fa-solid fa-ban"></i> Banned Users</div><div id="adminBannedList"></div></div>
-</div>
-</div>
+<div class="admin-panel-backdrop" id="adminBackdrop" onclick="closeAdmin(event)"><div class="admin-panel" onclick="event.stopPropagation()"><div class="admin-header"><div class="admin-title"><i class="fa-solid fa-shield-halved"></i> Admin Panel</div><button class="admin-close" onclick="closeAdminForce()">&times;</button></div><div class="admin-section"><div class="admin-section-title"><i class="fa-solid fa-wifi"></i> Online Now (<span id="adminOnlineCount">0</span>)</div><div id="adminOnlineList"><div class="admin-empty">Connect Firebase to see online users</div></div></div><div class="admin-section"><div class="admin-section-title"><i class="fa-solid fa-users"></i> All Users</div><div id="adminAllUsersList"></div></div><div class="admin-section"><div class="admin-section-title"><i class="fa-solid fa-ban"></i> Banned</div><div id="adminBannedList"></div></div></div></div>
 
-<div class="profile-backdrop" id="profileBackdrop" onclick="closeProfile(event)">
-<div class="profile-panel" onclick="event.stopPropagation()">
-    <div class="profile-header-area">
-        <button class="profile-close" onclick="closeProfileForce()">&times;</button>
-        <div class="profile-avatar-wrap" onclick="document.getElementById('profilePhotoInput').click()">
-            <img class="profile-avatar-img" id="profileAvatarImg" src="" style="display:none;">
-            <div class="profile-avatar-placeholder" id="profileAvatarPlaceholder"></div>
-            <div class="profile-avatar-overlay"><i class="fa-solid fa-camera"></i></div>
-        </div>
-        <input type="file" id="profilePhotoInput" accept="image/*" style="display:none" onchange="previewProfilePhoto(this)">
-        <div class="profile-username" id="profileDisplayName"></div>
-        <div class="profile-bio" id="profileDisplayBio"></div>
-        <div class="profile-joined" id="profileJoined"></div>
-    </div>
-    <div class="profile-stats">
-        <div class="profile-stat"><div class="profile-stat-num" id="profileRecipeCount">0</div><div class="profile-stat-label">Recipes</div></div>
-        <div class="profile-stat"><div class="profile-stat-num" id="profileLikeCount">0</div><div class="profile-stat-label">Likes</div></div>
-        <div class="profile-stat"><div class="profile-stat-num" id="profileFavCount">0</div><div class="profile-stat-label">Favorites</div></div>
-    </div>
-    <div class="profile-section">
-        <div class="profile-section-title">Edit Profile</div>
-        <div class="profile-field"><label>Username</label><input type="text" id="profileUsername" minlength="3" maxlength="30"></div>
-        <div class="profile-field"><label>Bio</label><textarea id="profileBio" maxlength="200" placeholder="Tell us about yourself..."></textarea></div>
-        <button class="profile-save-btn" onclick="saveProfile()">Save Changes</button>
-        <button class="profile-logout" onclick="logoutFromProfile()">Logout</button>
-    </div>
-</div>
-</div>
+<div class="profile-backdrop" id="profileBackdrop" onclick="closeProfile(event)"><div class="profile-panel" id="profilePanel" onclick="event.stopPropagation()"></div></div>
 
-<div class="modal-backdrop" id="viewModal" onclick="closeView(event)">
-<div class="modal" onclick="event.stopPropagation()">
-    <div class="modal-image" id="modalImage"></div>
-    <div class="modal-content">
-        <div class="modal-header"><div class="modal-avatar" id="modalAvatar"></div><div class="modal-user-info"><div class="modal-username" id="modalUser"></div><div class="modal-category-badge" id="modalCat"></div></div><button class="modal-close" onclick="closeViewForce()">&times;</button></div>
-        <div class="modal-body" id="modalBody"></div>
-        <div class="modal-stats-bar" id="modalStats"></div>
-        <div class="modal-footer" id="modalFooter"></div>
-        <div class="comments-section" id="commentsSection"></div>
-    </div>
-</div>
-</div>
+<div class="modal-backdrop" id="viewModal" onclick="closeView(event)"><div class="modal" onclick="event.stopPropagation()"><div class="modal-image" id="modalImage"></div><div class="modal-content"><div class="modal-header"><div class="modal-avatar" id="modalAvatar"></div><div class="modal-user-info"><div class="modal-username" id="modalUser"></div><div class="modal-category-badge" id="modalCat"></div></div><button class="modal-close" onclick="closeViewForce()">&times;</button></div><div class="modal-body" id="modalBody"></div><div class="modal-stats-bar" id="modalStats"></div><div class="modal-footer" id="modalFooter"></div><div class="comments-section" id="commentsSection"></div></div></div></div>
 
-<div class="add-modal-backdrop" id="addModal" onclick="closeAdd(event)">
-<div class="add-modal" onclick="event.stopPropagation()">
-    <div class="add-handle"></div>
-    <div class="add-header" id="addHeader"><button class="add-close" onclick="closeAddForce()"><i class="fa-solid fa-xmark"></i></button></div>
-    <form class="add-form" id="addForm" onsubmit="saveRecipe(event)">
-        <input type="hidden" id="editIndex" value="">
-        <div class="form-group"><label class="form-label" id="lblName"></label><input type="text" class="form-input" id="fTitle" required></div>
-        <div class="form-group"><label class="form-label" id="lblCat"></label><select class="form-select" id="fCategory"><option value="Breakfast">Breakfast</option><option value="Lunch">Lunch</option><option value="Dinner">Dinner</option><option value="Dessert">Dessert</option></select></div>
-        <div class="form-group">
-            <label class="form-label" id="lblIng"></label>
-            <textarea class="form-textarea" id="fIngredients" required></textarea>
-            <div class="form-hint" id="ingHint"></div>
-        </div>
-        <div class="form-group">
-            <label class="form-label" id="lblInst"></label>
-            <textarea class="form-textarea" id="fInstructions" required></textarea>
-            <div class="form-hint" id="instHint"></div>
-        </div>
-        <div class="form-group">
-            <label class="form-label" id="lblPhoto"></label>
-            <div class="gallery-upload-area" id="galleryUploadArea">
-                <div class="gallery-upload-btn" onclick="document.getElementById('fImages').click()"><i class="fa-solid fa-camera"></i><span>Add</span></div>
-            </div>
-            <input type="file" id="fImages" accept="image/*" multiple style="display:none" onchange="previewGalleryImages(this)">
-        </div>
-        <div class="form-group"><label class="form-label" id="lblAuthor"></label><input type="text" class="form-input" id="fAuthor" readonly></div>
-        <button type="submit" class="form-submit" id="submitBtn"></button>
-    </form>
-</div>
-</div>
+<div class="add-modal-backdrop" id="addModal" onclick="closeAdd(event)"><div class="add-modal" onclick="event.stopPropagation()"><div class="add-handle"></div><div class="add-header" id="addHeader"><button class="add-close" onclick="closeAddForce()"><i class="fa-solid fa-xmark"></i></button></div><form class="add-form" id="addForm" onsubmit="saveRecipe(event)"><input type="hidden" id="editIndex" value=""><div class="form-group"><label class="form-label" id="lblName">Recipe Name</label><input type="text" class="form-input" id="fTitle" required></div><div class="form-group"><label class="form-label" id="lblCat">Category</label><select class="form-select" id="fCategory"><option value="Breakfast">Breakfast</option><option value="Lunch">Lunch</option><option value="Dinner">Dinner</option><option value="Dessert">Dessert</option></select></div><div class="form-group"><label class="form-label" id="lblIng">Ingredients (one per line)</label><textarea class="form-textarea" id="fIngredients" required></textarea><div class="form-hint" id="ingHint"></div></div><div class="form-group"><label class="form-label" id="lblInst">Instructions (one per line)</label><textarea class="form-textarea" id="fInstructions" required></textarea><div class="form-hint" id="instHint"></div></div><div class="form-group"><label class="form-label" id="lblPhoto">Photos</label><div class="gallery-upload-area" id="galleryUploadArea"><div class="gallery-upload-btn" onclick="document.getElementById('fImages').click()"><i class="fa-solid fa-camera"></i><span>Add</span></div></div><input type="file" id="fImages" accept="image/*" multiple style="display:none" onchange="previewGalleryImages(this)"></div><div class="form-group"><label class="form-label" id="lblAuthor">Posted by</label><input type="text" class="form-input" id="fAuthor" readonly></div><button type="submit" class="form-submit" id="submitBtn">Save Recipe</button></form></div></div>
 
 <div class="save-indicator" id="saveIndicator"><i class="fa-solid fa-check-circle"></i><span id="savedText">Saved</span></div>
 <div class="toast" id="toast"></div>
-<div class="share-bar" id="shareBar">
-    <button class="share-opt whatsapp" onclick="shareWhatsApp()" title="WhatsApp"><i class="fa-brands fa-whatsapp"></i></button>
-    <button class="share-opt twitter" onclick="shareTwitter()" title="X / Twitter"><i class="fa-brands fa-x-twitter"></i></button>
-    <button class="share-opt facebook" onclick="shareFacebook()" title="Facebook"><i class="fa-brands fa-facebook-f"></i></button>
-    <button class="share-opt copy-link" onclick="copyRecipeLink()" title="Copy Link"><i class="fa-solid fa-link"></i></button>
-</div>
+<div class="notif-toast" id="notifToast"><div class="notif-avatar" id="notifAvatar"></div><div class="notif-body"><div class="notif-title" id="notifTitle"></div><div class="notif-desc" id="notifDesc"></div></div><button class="notif-close" onclick="hideNotif()"><i class="fa-solid fa-xmark"></i></button></div>
+<div class="share-bar" id="shareBar"><button class="share-opt whatsapp" onclick="shareWhatsApp()"><i class="fa-brands fa-whatsapp"></i></button><button class="share-opt twitter" onclick="shareTwitter()"><i class="fa-brands fa-x-twitter"></i></button><button class="share-opt facebook" onclick="shareFacebook()"><i class="fa-brands fa-facebook-f"></i></button><button class="share-opt copy-link" onclick="copyRecipeLink()"><i class="fa-solid fa-link"></i></button></div>
 
 <script>
-var recipes=JSON.parse(localStorage.getItem('ndesanjo_recipes'))||[];
-var currentView='all',currentTab='grid',currentLang=localStorage.getItem('ndesanjo_lang')||'en',viewingIndex=-1,saveTimeout=null;
-var translationCache={};
-try{translationCache=JSON.parse(localStorage.getItem('ndesanjo_translations'))||{};}catch(e){}
+/* ========== FIREBASE CONFIG ========== */
+var FIREBASE_CONFIG={apiKey:"",authDomain:"",databaseURL:"",projectId:"",storageBucket:"",messagingSenderId:"",appId:""};
+
+/* ========== GLOBALS ========== */
+var recipes=[],currentView='all',currentTab='grid',currentLang=localStorage.getItem('ndesanjo_lang')||'en';
+var viewingIndex=-1,saveTimeout=null,viewingUserId=null;
+var translationCache={};try{translationCache=JSON.parse(localStorage.getItem('ndesanjo_translations'))||{};}catch(e){}
 var catValues=['Breakfast','Lunch','Dinner','Dessert'];
 var categoryIcons={all:'<i class="fa-solid fa-utensils"></i>',Breakfast:'<i class="fa-solid fa-egg"></i>',Lunch:'<i class="fa-solid fa-burger"></i>',Dinner:'<i class="fa-solid fa-bowl-food"></i>',Dessert:'<i class="fa-solid fa-cake-candles"></i>',Favorites:'<i class="fa-solid fa-heart"></i>'};
 var EMOJI_MAP={Breakfast:'\u{1F373}',Lunch:'\u{1F957}',Dinner:'\u{1F37D}\uFE0F',Dessert:'\u{1F370}'};
+var tempGalleryImages=[],currentGallerySlide=0,shareRecipeIndex=-1;
+var currentUser=null,isAuthLoading=false,isTranslating=false;
+var firebaseDB=null,syncMode='offline',onlineUsers={},myPresenceRef=null;
+var notifTimer=null,toastTimer=null;
+var bc=null;try{bc=new BroadcastChannel('ndesanjo_sync');}catch(e){}
+if(bc)bc.onmessage=function(e){if(e.data&&e.data.type==='update'){var lf={};for(var f=0;f<recipes.length;f++){if(recipes[f].fav)lf[recipes[f]._id||'']=true;}recipes=e.data.recipes||[];for(var i=0;i<recipes.length;i++){if(lf[recipes[i]._id])recipes[i].fav=true;}saveLocal();render();}};
+
+/* Admin notification tracking */
+var adminNotifQueue=[];           // pending notification count
+var knownRecipeIds={};             // recipe IDs we've already notified about
+var knownOnlineUsers={};           // usernames we've seen online
+var knownCommentCounts={};         // recipeId -> comment count we last saw
+var adminNotifHistory=[];          // history for bell icon
+try{adminNotifHistory=JSON.parse(localStorage.getItem('ndesanjo_admin_notifs'))||[];}catch(e){}
+
+/* ========== UTILITIES ========== */
 function getCatEmoji(c){return EMOJI_MAP[c]||'\u{1F37D}\uFE0F';}
 function escHtml(s){var d=document.createElement('div');d.textContent=s;return d.innerHTML;}
 function escAttr(s){return s.replace(/'/g,'&#39;').replace(/"/g,'&quot;');}
 function timeAgo(ts){var s=Math.floor((Date.now()-ts)/1000);if(s<60)return 'just now';if(s<3600)return Math.floor(s/60)+'m ago';if(s<86400)return Math.floor(s/3600)+'h ago';if(s<604800)return Math.floor(s/86400)+'d ago';return new Date(ts).toLocaleDateString();}
 function formatNum(n){if(n>=1000)return(n/1000).toFixed(1)+'k';return n;}
-var tempGalleryImages=[],currentGallerySlide=0,shareRecipeIndex=-1;
+function genId(){return Date.now().toString(36)+Math.random().toString(36).substr(2,9);}
+function compressImage(dataUrl,maxDim,quality,cb){var img=new Image();img.onload=function(){var w=img.width,h=img.height;if(w>maxDim||h>maxDim){if(w>h){h=Math.round(h*maxDim/w);w=maxDim;}else{w=Math.round(w*maxDim/h);h=maxDim;}}var c=document.createElement('canvas');c.width=w;c.height=h;c.getContext('2d').drawImage(img,0,0,w,h);cb(c.toDataURL('image/jpeg',quality));};img.onerror=function(){cb(dataUrl);};img.src=dataUrl;}
 
-/* ===== IMPROVED TRANSLATION ===== */
-function detectLang(text) {
-    if (!text || text.trim() === '') return 'en';
-    var sw = 0, total = 0;
-    var swWords = ['na','ya','wa','ni','kwa','katika','hii','hizo','wote','pamoja','kisha','baada','kabla','ili','kwamba','sana','pia','bado','tena','ndani','nje','juu','chini','kulia','kushoto','leo','jana','kesho','sasa','hapa','pale','mzee','mtoto','kijana','mwanamke','mwanaume','chakula','mapishi','viungo','mafuta','nyama','samaki','mayai','sukuma','ugali','mandazi','chai','maji','kuku','mboga','tamu','laini','ngumu','fry','pika','osha','kata','changanya','weka','ondoa','sugua','paka','funika','bila','kupika','moja','mbili','tatu','nne','tano','sita','saba','nane','tisa','kumi','vikombe','vijiko','gramu','kilogramu','dakika','saa','joto','baridi','choma','chemsha','punguza','ongeza','sawa','vizuri','hatua','mwisho','mwanzo','tayari','fresh','kupitia','karibu','kutoka','leta','chukua','soma','andika','fanya','jibu','swali','habari','asante','karibu','kwaheri','ndiyo','hapana','labda','shaka','chumvi','sukari','pilipili','kitunguu','nyanya','karoti','spinaji','vitunguu','magimbi','ndizi','embe','machungwa','nanasi','tangawizi','dalasini','karafuu','hindi','nafaka','unga','supu','sosi','saladi','keki','biskuti','mvinyo','bia','jusi','matunda','kabichi','parachichi','zabibu','tikitiki','mchuzi','mchicha','dengu','maharage','njegere','ufuta','karanga','limau','viazi','mtama','mhindi','mchele','ngano','rangi','kijiji','mji','nchi','familia','nyumba','shule','hospitali','duka','sokoni','barabara','mlango','dirisha','meza','kitanda','kiti','bakuli','sahani','kijiko','kisu','moto','makaa','umeme','gesi','jiko','oven','fridge','jokofu'];
-    var words = text.toLowerCase().replace(/[^\w\s\u00C0-\u024F]/g, '').split(/\s+/);
-    for (var i = 0; i < words.length; i++) {
-        if (words[i].length < 2) continue;
-        total++;
-        for (var j = 0; j < swWords.length; j++) {
-            if (words[i] === swWords[j] || words[i].indexOf(swWords[j]) === 0) { sw++; break; }
-        }
-    }
-    return (total > 0 && sw / total > 0.15) ? 'sw' : 'en';
+/* ========== ADMIN CHECK — "000..." prefix OR exact "Bryan 5" ========== */
+function isAdminUser(){
+    if(!currentUser)return false;
+    // Users starting with "000" are system admins
+    if(currentUser.substring(0,3)==='000')return true;
+    // Exactly "Bryan 5" (case-insensitive) is the one non-000 admin
+    if(currentUser.toLowerCase().trim()==='bryan 5')return true;
+    return false;
 }
 
-async function translateTextAsync(text, retries=2) {
-    if (!text || text.trim() === '') return text;
-    var key = text.trim().toLowerCase();
-    var detected = detectLang(text);
-    if (currentLang === 'en') {
-        if (detected === 'sw') {
-            var cacheKey = 'sw2en:' + key;
-            if (translationCache[cacheKey]) return translationCache[cacheKey];
-            try {
-                var resp = await fetch('https://api.mymemory.translated.net/get?q=' + encodeURIComponent(text) + '&langpair=sw|en');
-                var data = await resp.json();
-                if (data.responseStatus === 200 && data.responseData && data.responseData.translatedText) {
-                    var tr = data.responseData.translatedText;
-                    if (tr !== text) {
-                        translationCache[cacheKey] = tr;
-                        persistCache();
-                        return tr;
-                    }
-                }
-            } catch(e) { console.warn(e); }
-            return text;
-        } else return text;
-    } else {
-        if (detected === 'en') {
-            var cacheKey2 = 'en2sw:' + key;
-            if (translationCache[cacheKey2]) return translationCache[cacheKey2];
-            try {
-                var resp2 = await fetch('https://api.mymemory.translated.net/get?q=' + encodeURIComponent(text) + '&langpair=en|sw');
-                var data2 = await resp2.json();
-                if (data2.responseStatus === 200 && data2.responseData && data2.responseData.translatedText) {
-                    var tr2 = data2.responseData.translatedText;
-                    if (tr2 !== text) {
-                        translationCache[cacheKey2] = tr2;
-                        persistCache();
-                        return tr2;
-                    }
-                }
-            } catch(e) { console.warn(e); }
-            return text;
-        } else return text;
-    }
-}
+/* ========== LOCAL STORAGE ========== */
+function saveLocal(){try{localStorage.setItem('ndesanjo_recipes',JSON.stringify(recipes));}catch(e){}}
+function save(){saveLocal();showSaveIndicator();if(firebaseDB)pushToFirebase();if(bc)bc.postMessage({type:'update',recipes:recipes});}
+function showSaveIndicator(){var el=document.getElementById('saveIndicator');el.classList.add('show');clearTimeout(saveTimeout);saveTimeout=setTimeout(function(){el.classList.remove('show');},1800);}
 
-async function translateArrayAsync(arr) {
-    if (!arr || !arr.length) return arr;
-    var results = [];
-    for (var i = 0; i < arr.length; i++) {
-        results.push(await translateTextAsync(arr[i]));
-    }
-    return results;
-}
-
-function persistCache() {
-    try { var s = JSON.stringify(translationCache); if (s.length < 4000000) localStorage.setItem('ndesanjo_translations', s); } catch(e) {}
-}
-
-async function translateAllTexts() {
-    var all = [], seen = {};
-    for (var i = 0; i < recipes.length; i++) {
-        var r = recipes[i];
-        var fields = [r.title];
-        for (var j = 0; j < r.ingredients.length; j++) fields.push(r.ingredients[j]);
-        for (var k = 0; k < r.instructions.length; k++) fields.push(r.instructions[k]);
-        for (var c = 0; c < (r.comments || []).length; c++) { var ct = (r.comments[c].text || ''); if (ct) fields.push(ct); }
-        for (var f = 0; f < fields.length; f++) {
-            var text = fields[f];
-            if (!text || !text.trim()) continue;
-            var key = text.trim().toLowerCase();
-            if (seen[key]) continue;
-            seen[key] = true;
-            var detected = detectLang(text);
-            var needsTrans = (currentLang === 'en' && detected === 'sw') || (currentLang === 'sw' && detected === 'en');
-            if (needsTrans) all.push(text);
-        }
-    }
-    for (var b = 0; b < all.length; b += 5) {
-        var batch = all.slice(b, b+5);
-        await Promise.all(batch.map(t => translateTextAsync(t)));
-    }
-}
-
-function tx(text) { 
-    if (!text) return text;
-    var key = text.trim().toLowerCase();
-    var detected = detectLang(text);
-    if (currentLang === 'en') {
-        if (detected === 'sw') {
-            var cached = translationCache['sw2en:' + key];
-            if (cached) return cached;
-        }
-    } else {
-        if (detected === 'en') {
-            var cached = translationCache['en2sw:' + key];
-            if (cached) return cached;
-        }
-    }
-    return text;
-}
-
-function txCat(cat) { var m = { Breakfast:{en:'Breakfast',sw:'Kiamsha Kinywa'}, Lunch:{en:'Lunch',sw:'Chakula cha Mchana'}, Dinner:{en:'Dinner',sw:'Chakula cha Jioni'}, Dessert:{en:'Dessert',sw:'Tamu'} }; return (m[cat] && m[cat][currentLang]) || cat; }
-
-/* ===== AUTH ===== */
-var currentUser=null,isAuthLoading=false;
-function isAdminUser(){return currentUser&&currentUser.substring(0,3)==='000';}
+/* ========== USER MANAGEMENT ========== */
 function getUsers(){try{return JSON.parse(localStorage.getItem('ndesanjo_users'))||[];}catch(e){return[];}}
 function saveUsers(u){try{localStorage.setItem('ndesanjo_users',JSON.stringify(u));}catch(e){}}
 function getBanned(){try{return JSON.parse(localStorage.getItem('ndesanjo_banned'))||[];}catch(e){return[];}}
 function saveBanned(b){try{localStorage.setItem('ndesanjo_banned',JSON.stringify(b));}catch(e){}}
-function hashPassword(pwd){return new Promise(function(resolve){try{if(window.crypto&&window.crypto.subtle){var enc=new TextEncoder();window.crypto.subtle.digest('SHA-256',enc.encode(pwd)).then(function(buf){var arr=new Uint8Array(buf);var hex='';for(var i=0;i<arr.length;i++)hex+=arr[i].toString(16).padStart(2,'0');resolve(hex);}).catch(function(){resolve(fallbackHash(pwd));});}else{resolve(fallbackHash(pwd));}}catch(e){resolve(fallbackHash(pwd));}});}
-function fallbackHash(str){var h1=0xdeadbeef,h2=0x41c6ce57;for(var i=0;i<str.length;i++){var ch=str.charCodeAt(i);h1=Math.imul(h1^ch,2654435761);h2=Math.imul(h2^ch,1597334677);}h1=Math.imul(h1^(h1>>>16),2246822507)^Math.imul(h2^(h2>>>13),3266489909);h2=Math.imul(h2^(h2>>>16),2246822507)^Math.imul(h1^(h1>>>13),3266489909);return(4294967296*(2097151&h2)+(h1>>>0)).toString(16).padStart(16,'0');}
-function createSession(name){currentUser=name;try{localStorage.setItem('ndesanjo_session',JSON.stringify({name:name,ts:Date.now()}));}catch(e){}}
-function destroySession(){currentUser=null;try{localStorage.removeItem('ndesanjo_session');}catch(e){}}
-
 function getUserProfile(name){try{var p=JSON.parse(localStorage.getItem('ndesanjo_profiles'))||{};return p[name.toLowerCase()]||null;}catch(e){return null;}}
 function saveUserProfile(name,data){try{var p=JSON.parse(localStorage.getItem('ndesanjo_profiles'))||{};p[name.toLowerCase()]=data;localStorage.setItem('ndesanjo_profiles',JSON.stringify(p));}catch(e){}}
 function getUserPhoto(name){var p=getUserProfile(name);return(p&&p.photo)||'';}
 function getUserDisplayName(name){var p=getUserProfile(name);return(p&&p.displayName)||name;}
+function getUserJoined(name){var p=getUserProfile(name);return(p&&p.joined)||Date.now();}
 
+/* ========== SESSION PERSISTENCE ========== */
+function createSession(name){
+    currentUser=name;
+    try{localStorage.setItem('ndesanjo_session',JSON.stringify({name:name,ts:Date.now()}));}catch(e){}
+}
+function destroySession(){
+    currentUser=null;
+    try{localStorage.removeItem('ndesanjo_session');}catch(e){}
+    if(myPresenceRef&&firebaseDB){try{myPresenceRef.remove();}catch(e){}}
+}
+function restoreSession(){
+    try{
+        var raw=localStorage.getItem('ndesanjo_session');
+        if(!raw)return false;
+        var session=JSON.parse(raw);
+        if(!session||!session.name)return false;
+        var name=session.name;
+        var users=getUsers(),found=false;
+        for(var i=0;i<users.length;i++){if(users[i].name.toLowerCase()===name.toLowerCase()){found=true;break;}}
+        if(!found){destroySession();return false;}
+        var banned=getBanned();
+        for(var j=0;j<banned.length;j++){if(banned[j].name.toLowerCase()===name.toLowerCase()){destroySession();return false;}}
+        currentUser=name;
+        return true;
+    }catch(e){try{localStorage.removeItem('ndesanjo_session');}catch(e2){}return false;}
+}
+
+/* ========== PASSWORD HASHING ========== */
+function hashPassword(pwd){return new Promise(function(resolve){try{if(window.crypto&&window.crypto.subtle){var enc=new TextEncoder();window.crypto.subtle.digest('SHA-256',enc.encode(pwd)).then(function(buf){var arr=new Uint8Array(buf),hex='';for(var i=0;i<arr.length;i++)hex+=arr[i].toString(16).padStart(2,'0');resolve(hex);}).catch(function(){resolve(fbH(pwd));});}else resolve(fbH(pwd));}catch(e){resolve(fbH(pwd));}});}
+function fbH(s){var h1=0xdeadbeef,h2=0x41c6ce57;for(var i=0;i<s.length;i++){var c=s.charCodeAt(i);h1=Math.imul(h1^c,2654435761);h2=Math.imul(h2^c,1597334677);}h1=Math.imul(h1^(h1>>>16),2246822507)^Math.imul(h2^(h2>>>13),3266489909);h2=Math.imul(h2^(h2>>>16),2246822507)^Math.imul(h1^(h1>>>13),3266489909);return(4294967296*(2097151&h2)+(h1>>>0)).toString(16).padStart(16,'0');}
+
+/* ========== AUTH ========== */
 function switchAuthTab(tab){document.getElementById('loginForm').classList.toggle('active',tab==='login');document.getElementById('signupForm').classList.toggle('active',tab==='signup');document.getElementById('tabLogin').classList.toggle('active',tab==='login');document.getElementById('tabSignup').classList.toggle('active',tab==='signup');clearAuthError();}
 function showAuthError(msg){var el=document.getElementById('authError');el.innerHTML='<i class="fa-solid fa-circle-exclamation"></i>'+msg;el.classList.add('show');}
 function clearAuthError(){document.getElementById('authError').classList.remove('show');}
-function setAuthLoading(btnId,loading){var btn=document.getElementById(btnId);if(loading){btn.classList.add('loading');btn.disabled=true;}else{btn.classList.remove('loading');btn.disabled=false;}}
+function setAuthLoading(id,on){var b=document.getElementById(id);if(on){b.classList.add('loading');b.disabled=true;}else{b.classList.remove('loading');b.disabled=false;}}
 
-async function handleSignup(e){e.preventDefault();if(isAuthLoading)return;var name=document.getElementById('signupUser').value.trim(),pass=document.getElementById('signupPass').value,confirm=document.getElementById('signupConfirm').value;if(name.length<3){showAuthError('Username must be at least 3 characters');return;}if(!/^[a-zA-Z0-9_]+$/.test(name)){showAuthError('Username can only contain letters, numbers, and underscores');return;}if(pass.length<4){showAuthError('Password must be at least 4 characters');return;}if(pass!==confirm){showAuthError('Passwords do not match');return;}isAuthLoading=true;setAuthLoading('signupBtn',true);try{var users=getUsers();for(var i=0;i<users.length;i++){if(users[i].name.toLowerCase()===name.toLowerCase()){showAuthError('Username "'+name+'" is already taken');isAuthLoading=false;setAuthLoading('signupBtn',false);return;}}var hash=await hashPassword(pass);users.push({name:name,hash:hash,joined:Date.now()});saveUsers(users);saveUserProfile(name,{displayName:name,bio:'',photo:'',joined:Date.now()});createSession(name);enterApp();}catch(err){showAuthError('Something went wrong. Please try again.');}isAuthLoading=false;setAuthLoading('signupBtn',false);}
+async function handleSignup(e){
+    e.preventDefault();if(isAuthLoading)return;
+    var name=document.getElementById('signupUser').value.trim(),pass=document.getElementById('signupPass').value,conf=document.getElementById('signupConfirm').value;
+    if(name.length<3){showAuthError('Username must be at least 3 characters');return;}
+    if(!/^[a-zA-Z0-9_ ]+$/.test(name)){showAuthError('Letters, numbers, spaces, underscores only');return;}
+    if(pass.length<4){showAuthError('Password must be at least 4 characters');return;}
+    if(pass!==conf){showAuthError('Passwords do not match');return;}
+    isAuthLoading=true;setAuthLoading('signupBtn',true);
+    try{
+        var users=getUsers();
+        for(var i=0;i<users.length;i++){if(users[i].name.toLowerCase()===name.toLowerCase()){showAuthError('Username "'+name+'" is taken');isAuthLoading=false;setAuthLoading('signupBtn',false);return;}}
+        var hash=await hashPassword(pass);
+        users.push({name:name,hash:hash,joined:Date.now()});
+        saveUsers(users);
+        saveUserProfile(name,{displayName:name,bio:'',photo:'',joined:Date.now()});
+        createSession(name);
+        // Notify admin about new user
+        notifyAdmin('new_user',name,'New user registered: '+name);
+        enterApp();
+    }catch(err){showAuthError('Something went wrong.');}
+    isAuthLoading=false;setAuthLoading('signupBtn',false);
+}
 
-async function handleLogin(e){e.preventDefault();if(isAuthLoading)return;var name=document.getElementById('loginUser').value.trim(),pass=document.getElementById('loginPass').value;if(!name){showAuthError('Please enter your username');return;}if(!pass){showAuthError('Please enter your password');return;}isAuthLoading=true;setAuthLoading('loginBtn',true);try{var users=getUsers(),foundUser=null;for(var i=0;i<users.length;i++){if(users[i].name.toLowerCase()===name.toLowerCase()){foundUser=users[i];break;}}if(!foundUser){showAuthError('No account found with username "'+name+'"');isAuthLoading=false;setAuthLoading('loginBtn',false);return;}var hash=await hashPassword(pass);if(foundUser.hash!==hash){showAuthError('Incorrect password. Please try again.');isAuthLoading=false;setAuthLoading('loginBtn',false);return;}var banned=getBanned();for(var j=0;j<banned.length;j++){if(banned[j].name.toLowerCase()===name.toLowerCase()){showAuthError('This account has been suspended by an admin');isAuthLoading=false;setAuthLoading('loginBtn',false);return;}}createSession(foundUser.name);enterApp();}catch(err){showAuthError('Something went wrong. Please try again.');}isAuthLoading=false;setAuthLoading('loginBtn',false);}
+async function handleLogin(e){
+    e.preventDefault();if(isAuthLoading)return;
+    var name=document.getElementById('loginUser').value.trim(),pass=document.getElementById('loginPass').value;
+    if(!name){showAuthError('Enter your username');return;}
+    if(!pass){showAuthError('Enter your password');return;}
+    isAuthLoading=true;setAuthLoading('loginBtn',true);
+    try{
+        var users=getUsers(),found=null;
+        for(var i=0;i<users.length;i++){if(users[i].name.toLowerCase()===name.toLowerCase()){found=users[i];break;}}
+        if(!found){showAuthError('No account for "'+name+'"');isAuthLoading=false;setAuthLoading('loginBtn',false);return;}
+        var hash=await hashPassword(pass);
+        if(found.hash!==hash){showAuthError('Incorrect password');isAuthLoading=false;setAuthLoading('loginBtn',false);return;}
+        var banned=getBanned();
+        for(var j=0;j<banned.length;j++){if(banned[j].name.toLowerCase()===name.toLowerCase()){showAuthError('Account suspended by admin');isAuthLoading=false;setAuthLoading('loginBtn',false);return;}}
+        createSession(name);
+        enterApp();
+    }catch(err){showAuthError('Something went wrong.');}
+    isAuthLoading=false;setAuthLoading('loginBtn',false);
+}
 
-function handleUserBadgeClick(){openProfile();}
+/* ========== ADMIN NOTIFICATIONS ========== */
+function notifyAdmin(type,source,detail){
+    if(!isAdminUser())return;
+    var icon='',title='';
+    if(type==='new_recipe'){icon='fa-utensils';title='New Recipe Posted';}
+    else if(type==='new_comment'){icon='fa-comment';title='New Comment';}
+    else if(type==='new_user'){icon='fa-user-plus';title='New User Joined';}
+    else if(type==='user_online'){icon='fa-circle';title='User Came Online';}
+    else{icon='fa-bell';title='Notification';}
 
-function enterApp(){document.getElementById('authOverlay').classList.add('hidden');document.getElementById('userName').textContent=getUserDisplayName(currentUser);var badge=document.getElementById('userBadge');if(isAdminUser())badge.classList.add('admin-badge');else badge.classList.remove('admin-badge');var photo=getUserPhoto(currentUser),avEl=document.getElementById('userBadgeAvatar');if(photo){avEl.src=photo;avEl.classList.add('visible');badge.classList.add('has-avatar');}else{avEl.classList.remove('visible');badge.classList.remove('has-avatar');}updateUIStrings();renderStories();render();}
+    // Add to queue
+    adminNotifQueue.push({type:type,source:source,detail:detail,icon:icon,title:title,time:Date.now()});
 
-/* PROFILE */
-function openProfile(){if(!currentUser)return;var profile=getUserProfile(currentUser)||{};var photo=profile.photo||'',displayName=profile.displayName||currentUser,bio=profile.bio||'',joined=profile.joined||Date.now();document.getElementById('profileUsername').value=displayName;document.getElementById('profileBio').value=bio;document.getElementById('profileDisplayName').textContent=displayName;document.getElementById('profileDisplayBio').textContent=bio||'No bio yet';document.getElementById('profileJoined').textContent='Joined '+new Date(joined).toLocaleDateString();var imgEl=document.getElementById('profileAvatarImg'),phEl=document.getElementById('profileAvatarPlaceholder');if(photo){imgEl.src=photo;imgEl.style.display='block';phEl.style.display='none';}else{imgEl.style.display='none';phEl.style.display='flex';phEl.textContent=displayName.charAt(0).toUpperCase();}var myRecipes=0,myLikes=0,myFavs=0;for(var i=0;i<recipes.length;i++){if(recipes[i].ownerId===currentUser){myRecipes++;myLikes+=(recipes[i].likes||0);}if(recipes[i].fav)myFavs++;}document.getElementById('profileRecipeCount').textContent=myRecipes;document.getElementById('profileLikeCount').textContent=myLikes;document.getElementById('profileFavCount').textContent=myFavs;document.getElementById('profileBackdrop').classList.add('show');document.body.style.overflow='hidden';}
-function closeProfile(e){if(e.target===e.currentTarget)closeProfileForce();}
-function closeProfileForce(){document.getElementById('profileBackdrop').classList.remove('show');document.body.style.overflow='';}
-function previewProfilePhoto(input){if(!input.files||!input.files[0])return;var reader=new FileReader();reader.onload=function(e){compressImage(e.target.result,300,0.8,function(dataUrl){document.getElementById('profileAvatarImg').src=dataUrl;document.getElementById('profileAvatarImg').style.display='block';document.getElementById('profileAvatarPlaceholder').style.display='none';var profile=getUserProfile(currentUser)||{displayName:currentUser,bio:'',photo:'',joined:Date.now()};profile.photo=dataUrl;saveUserProfile(currentUser,profile);updateBadgeAvatar();});};reader.readAsDataURL(input.files[0]);}
-function updateBadgeAvatar(){var photo=getUserPhoto(currentUser),avEl=document.getElementById('userBadgeAvatar'),badge=document.getElementById('userBadge');if(photo){avEl.src=photo;avEl.classList.add('visible');badge.classList.add('has-avatar');}else{avEl.classList.remove('visible');badge.classList.remove('has-avatar');}document.getElementById('userName').textContent=getUserDisplayName(currentUser);}
+    // Save to history (max 50)
+    adminNotifHistory.unshift({type:type,source:source,detail:detail,icon:icon,title:title,time:Date.now()});
+    if(adminNotifHistory.length>50)adminNotifHistory=adminNotifHistory.slice(0,50);
+    try{localStorage.setItem('ndesanjo_admin_notifs',JSON.stringify(adminNotifHistory));}catch(e){}
 
-function saveProfile(){var newName=document.getElementById('profileUsername').value.trim(),newBio=document.getElementById('profileBio').value.trim();if(newName.length<3){showToast('Username must be at least 3 characters');return;}if(!/^[a-zA-Z0-9_ ]+$/.test(newName)){showToast('Username can only contain letters, numbers, spaces, and underscores');return;}if(newName.toLowerCase()!==currentUser.toLowerCase()){var users=getUsers();for(var i=0;i<users.length;i++){if(users[i].name.toLowerCase()===newName.toLowerCase()&&users[i].name.toLowerCase()!==currentUser.toLowerCase()){showToast('Username "'+newName+'" is already taken');return;}}}var profile=getUserProfile(currentUser)||{displayName:currentUser,bio:'',photo:'',joined:Date.now()};profile.displayName=newName;profile.bio=newBio;saveUserProfile(currentUser,profile);if(newName.toLowerCase()!==currentUser.toLowerCase()){var users=getUsers();for(var j=0;j<users.length;j++){if(users[j].name.toLowerCase()===currentUser.toLowerCase()){users[j].name=newName;break;}}saveUsers(users);for(var k=0;k<recipes.length;k++){if(recipes[k].ownerId===currentUser)recipes[k].ownerId=newName;if(recipes[k].author===currentUser)recipes[k].author=newName;}for(var n=0;n<recipes.length;n++){if(recipes[n].comments){for(var c=0;c<recipes[n].comments.length;c++){if(recipes[n].comments[c].userId===currentUser){recipes[n].comments[c].name=newName;recipes[n].comments[c].userId=newName;}}}}save();saveUserProfile(newName,profile);try{var profiles=JSON.parse(localStorage.getItem('ndesanjo_profiles'))||{};delete profiles[currentUser.toLowerCase()];localStorage.setItem('ndesanjo_profiles',JSON.stringify(profiles));}catch(e){}currentUser=newName;createSession(newName);}document.getElementById('profileDisplayName').textContent=newName;document.getElementById('profileDisplayBio').textContent=newBio||'No bio yet';if(!getUserPhoto(currentUser))document.getElementById('profileAvatarPlaceholder').textContent=newName.charAt(0).toUpperCase();updateBadgeAvatar();render();showToast('Profile updated');}
-function logoutFromProfile(){closeProfileForce();destroySession();document.getElementById('authOverlay').classList.remove('hidden');document.getElementById('loginUser').value='';document.getElementById('loginPass').value='';clearAuthError();}
+    // Update bell badge
+    updateNotifBadge();
 
-function compressImage(dataUrl,maxDim,quality,callback){var img=new Image();img.onload=function(){var w=img.width,h=img.height;if(w>maxDim||h>maxDim){if(w>h){h=Math.round(h*maxDim/w);w=maxDim;}else{w=Math.round(w*maxDim/h);h=maxDim;}}var canvas=document.createElement('canvas');canvas.width=w;canvas.height=h;canvas.getContext('2d').drawImage(img,0,0,w,h);callback(canvas.toDataURL('image/jpeg',quality));};img.onerror=function(){callback(dataUrl);};img.src=dataUrl;}
+    // Show toast (don't spam — show latest)
+    showAdminNotifToast(adminNotifQueue[adminNotifQueue.length-1]);
+}
 
-/* VISITOR */
-function updateVisitorCount(){var now=Date.now(),wm=120000;try{var vc=JSON.parse(localStorage.getItem('ndesanjo_visitors'))||[];vc=vc.filter(function(t){return now-t.t<wm;});var fid=currentUser||'anon',found=false;for(var i=0;i<vc.length;i++){if(vc[i].id===fid){found=true;vc[i].t=now;vc[i].name=currentUser||'Anonymous';break;}}if(!found)vc.push({id:fid,name:currentUser||'Anonymous',t:now});localStorage.setItem('ndesanjo_visitors',JSON.stringify(vc));document.getElementById('visitorCount').textContent=vc.length;}catch(e){document.getElementById('visitorCount').textContent='1';}}
-updateVisitorCount();setInterval(updateVisitorCount,30000);
+function updateNotifBadge(){
+    var bell=document.getElementById('notifBell'),badge=document.getElementById('notifBadge');
+    if(!isAdminUser()){bell.style.display='none';return;}
+    bell.style.display='flex';
+    var count=adminNotifQueue.length;
+    if(count>0){badge.style.display='flex';badge.textContent=count>99?'99+':count;}
+    else{badge.style.display='none';}
+}
 
-/* ADMIN */
-function openAdminPanel(){if(!isAdminUser())return;renderAdminPanel();document.getElementById('adminBackdrop').classList.add('show');document.body.style.overflow='hidden';}
-function closeAdmin(e){if(e.target===e.currentTarget)closeAdminForce();}
-function closeAdminForce(){document.getElementById('adminBackdrop').classList.remove('show');document.body.style.overflow='';}
-function renderAdminPanel(){var onlineHtml='';try{var vc=JSON.parse(localStorage.getItem('ndesanjo_visitors'))||[];var banned=getBanned(),bannedNames={};for(var bi=0;bi<banned.length;bi++)bannedNames[banned[bi].name.toLowerCase()]=true;var users=getUsers(),userNames={};for(var u=0;u<users.length;u++)userNames[users[u].name.toLowerCase()]=true;var seen={};for(var i=0;i<vc.length;i++){var v=vc[i];if(seen[v.id])continue;seen[v.id]=true;var isBanned=v.name?bannedNames[v.name.toLowerCase()]:false;var isUser=v.name?userNames[v.name.toLowerCase()]:false;var userPhoto=v.name?getUserPhoto(v.name):'';var avatarInner=userPhoto?'<img src="'+userPhoto+'">':(isUser?v.name.charAt(0).toUpperCase():'?');var tagHtml='';if(isBanned)tagHtml='<span class="banned-tag">BANNED</span>';else if(isUser&&v.name.substring(0,3)==='000')tagHtml='<span class="admin-tag">ADMIN</span>';var actionBtn=isBanned?'<button class="admin-btn-sm unban-btn" onclick="unbanUser(\''+escAttr(v.name)+'\')" title="Unban"><i class="fa-solid fa-lock-open"></i></button>':'<button class="admin-btn-sm ban-btn" onclick="banUser(\''+escAttr(v.name)+'\')" title="Ban"><i class="fa-solid fa-ban"></i></button>';onlineHtml+='<div class="admin-user-row"><div class="admin-user-avatar'+(isBanned?' banned-avatar':'')+'">'+avatarInner+'</div><div class="admin-user-info"><div class="admin-user-name">'+escHtml(getUserDisplayName(v.name||'Anonymous'))+tagHtml+'</div><div class="admin-user-time">Active now</div></div><div class="admin-user-actions">'+actionBtn+'</div></div>';}}catch(e){onlineHtml='<div class="admin-empty">Unable to load data</div>';}if(!onlineHtml)onlineHtml='<div class="admin-empty">No online users</div>';document.getElementById('adminOnlineList').innerHTML=onlineHtml;var bannedHtml='',bannedList=getBanned();if(bannedList.length===0){bannedHtml='<div class="admin-empty">No banned users</div>';}else{for(var j=0;j<bannedList.length;j++){var bn=bannedList[j];bannedHtml+='<div class="admin-user-row"><div class="admin-user-avatar banned-avatar"><i class="fa-solid fa-user-slash" style="font-size:12px;"></i></div><div class="admin-user-info"><div class="admin-user-name">'+escHtml(bn.name)+'<span class="banned-tag">BANNED</span></div><div class="admin-user-time">Since '+new Date(bn.time).toLocaleDateString()+'</div></div><div class="admin-user-actions"><button class="admin-btn-sm unban-btn" onclick="unbanUser(\''+escAttr(bn.name)+'\')" title="Unban"><i class="fa-solid fa-lock-open"></i></button></div></div>';}}document.getElementById('adminBannedList').innerHTML=bannedHtml;}
-function banUser(name){if(!isAdminUser())return;var banned=getBanned();for(var i=0;i<banned.length;i++){if(banned[i].name.toLowerCase()===name.toLowerCase()){showToast(name+' is already banned');return;}}banned.push({name:name,time:Date.now()});saveBanned(banned);try{var vc=JSON.parse(localStorage.getItem('ndesanjo_visitors'))||[];vc=vc.filter(function(v){return!v.name||v.name.toLowerCase()!==name.toLowerCase();});localStorage.setItem('ndesanjo_visitors',JSON.stringify(vc));}catch(e){}renderAdminPanel();render();showToast(name+' has been banned');}
-function unbanUser(name){if(!isAdminUser())return;saveBanned(getBanned().filter(function(b){return b.name.toLowerCase()!==name.toLowerCase();}));renderAdminPanel();render();showToast(name+' has been unbanned');}
+function showAdminNotifToast(notif){
+    var av=document.getElementById('notifAvatar'),p=getUserPhoto(notif.source);
+    av.innerHTML=p?'<img src="'+p+'">':(notif.source||'?').charAt(0).toUpperCase();
+    document.getElementById('notifTitle').textContent=notif.title;
+    document.getElementById('notifDesc').textContent=notif.detail;
+    document.getElementById('notifToast').classList.add('admin-notif');
+    document.getElementById('notifToast').classList.add('show');
+    clearTimeout(notifTimer);
+    notifTimer=setTimeout(hideNotif,3500);
+}
 
-/* UI STRINGS */
-var ui={search_placeholder:{en:'Search recipes...',sw:'Tafuta mapishi...'},fav_title:{en:'Favorites',sw:'Vipendwa'},saved_label:{en:'saved',sw:'imehifadhiwa'},grid_tab:{en:'GRID',sw:'GRIDI'},list_tab:{en:'LIST',sw:'ORODHA'},all_recipes:{en:'All Recipes',sw:'Mapishi Yote'},recipe_label:{en:'recipe',sw:'mapishi'},recipes_label:{en:'recipes',sw:'mapishi'},new_recipe:{en:'New Recipe',sw:'Mapishi Mpya'},recipe_name:{en:'Recipe Name',sw:'Jina la Mapishi'},name_placeholder:{en:'What are you cooking?',sw:'Unapika nini?'},category:{en:'Category',sw:'Kundi'},ingredients_label:{en:'Ingredients (one per line)',sw:'Viungo (moja kwa kila mstari)'},instructions_label:{en:'Instructions (one per line)',sw:'Maelekezo (moja kwa kila mstari)'},photos:{en:'Photos',sw:'Picha'},save_recipe:{en:'Save Recipe',sw:'Hifadhi Mapishi'},update_recipe:{en:'Update Recipe',sw:'Bosha Mapishi'},posted_by:{en:'Posted by',sw:'Imewekwa na'},ndesanjo_family:{en:'Ndesanjo Family',sw:'Familia ya Ndesanjo'},ingredients_title:{en:'Ingredients',sw:'Viungo'},instructions_title:{en:'Instructions',sw:'Maelekezo'},comments_title:{en:'Comments',sw:'Maoni'},comment_placeholder:{en:'Add a comment...',sw:'Ongeza maoni...'},added_fav:{en:'Added to favorites',sw:'Imeongezwa kwenye vipendwa'},removed_fav:{en:'Removed from favorites',sw:'Imeondolewa kwenye vipendwa'},deleted:{en:'Recipe deleted',sw:'Mapishi yamefutwa'},saved_msg:{en:'Recipe saved',sw:'Mapishi yamehifadhiwa'},updated_msg:{en:'Recipe updated',sw:'Mapishi yameboshewa'},empty_title:{en:'No recipes found',sw:'Hakuna mapishi yaliyopatikana'},empty_sub:{en:'Tap + to add your first recipe',sw:'Bonyeza + kuongeza mapishi yako ya kwanza'},saved_indicator:{en:'Saved',sw:'Imehifadhiwa'},confirm_delete:{en:'Delete this recipe?',sw:'Futa mapishi hii?'},storage_full:{en:'Storage full.',sw:'Hifadhi imejaa.'},translating:{en:'Translating...',sw:'Inatafsiri...'},views:{en:'views',sw:'mara kuangaliwa'},likes:{en:'likes',sw:'mapendano'},comments_count:{en:'comments',sw:'maoni'},story_all:{en:'All',sw:'Yote'},story_favorites:{en:'Favorites',sw:'Vipendwa'},story_breakfast:{en:'Breakfast',sw:'Kiamsha Kinywa'},story_lunch:{en:'Lunch',sw:'Chakula Mchana'},story_dinner:{en:'Dinner',sw:'Chakula Jioni'},story_dessert:{en:'Dessert',sw:'Tamu'},link_copied:{en:'Link copied!',sw:'Kiungo imenakiliwa!'},share_text:{en:'Check out this recipe:',sw:'Angalia mapishi hii:'},input_lang_en:{en:'Write in any language — auto-detected as English',sw:'Andika kwa lugha yoyote — imetambuliwa kama Kiingereza'},input_lang_sw:{en:'Write in any language — auto-detected as Swahili',sw:'Andika kwa lugha yoyote — imetambuliwa kama Kiswahili'}};
+function hideNotif(){document.getElementById('notifToast').classList.remove('show');document.getElementById('notifToast').classList.remove('admin-notif');}
+
+function showNotifHistory(){
+    // Clear queue when bell clicked
+    adminNotifQueue=[];
+    updateNotifBadge();
+    if(adminNotifHistory.length===0){showToast('No notifications yet');return;}
+    // Show most recent as toast
+    if(adminNotifHistory.length>0)showAdminNotifToast(adminNotifHistory[0]);
+}
+
+function checkAdminNotifsForNewRecipe(recipe){
+    if(!isAdminUser())return;
+    if(!recipe._id||knownRecipeIds[recipe._id])return;
+    if(recipe.ownerId===currentUser)return; // Don't notify for own recipes
+    knownRecipeIds[recipe._id]=true;
+    notifyAdmin('new_recipe',recipe.author||recipe.ownerId||'Someone','"'+recipe.title+'" by '+(getUserDisplayName(recipe.author||recipe.ownerId||'Someone')));
+}
+
+function checkAdminNotifsForComments(recipeId,commentCount,commentAuthor,commentText){
+    if(!isAdminUser())return;
+    var prev=knownCommentCounts[recipeId]||0;
+    if(commentCount>prev&&commentAuthor!==currentUser){
+        knownCommentCounts[recipeId]=commentCount;
+        var recipeName='a recipe';
+        for(var i=0;i<recipes.length;i++){if(recipes[i]._id===recipeId){recipeName=recipes[i].title;break;}}
+        var preview=commentText.length>40?commentText.substring(0,40)+'...':commentText;
+        notifyAdmin('new_comment',commentAuthor,getUserDisplayName(commentAuthor)+' commented on "'+recipeName+'": '+preview);
+    }else{knownCommentCounts[recipeId]=commentCount;}
+}
+
+function checkAdminNotifsForOnline(){
+    if(!isAdminUser())return;
+    for(var key in onlineUsers){
+        var u=onlineUsers[key];
+        if(!u||!u.name||u.name===currentUser)continue;
+        if(!knownOnlineUsers[u.name.toLowerCase()]){
+            knownOnlineUsers[u.name.toLowerCase()]=true;
+            notifyAdmin('user_online',u.name,getUserDisplayName(u.name)+' came online');
+        }
+    }
+}
+
+/* ========== ENTER APP ========== */
+function enterApp(){
+    document.getElementById('authOverlay').classList.add('hidden');
+    document.getElementById('userName').textContent=getUserDisplayName(currentUser);
+    var badge=document.getElementById('userBadge');badge.style.display='';
+    if(isAdminUser())badge.classList.add('admin-badge');else badge.classList.remove('admin-badge');
+    updateBadgeAvatar();
+    document.getElementById('addNavBtn').style.display='';
+    document.getElementById('fabBtn').style.display='flex';
+    setupPresence();
+    updateUIStrings();renderStories();render();
+    updateNotifBadge();
+    if(syncMode!=='online')checkSetupNeeded();
+}
+
+function updateBadgeAvatar(){
+    var photo=getUserPhoto(currentUser),av=document.getElementById('userBadgeAvatar'),badge=document.getElementById('userBadge');
+    if(photo){av.src=photo;av.classList.add('visible');}else{av.classList.remove('visible');}
+    document.getElementById('userName').textContent=getUserDisplayName(currentUser);
+}
+
+/* ========== FIREBASE ========== */
+function initFirebase(){
+    if(!FIREBASE_CONFIG.databaseURL){updateSyncUI('offline');return;}
+    try{
+        var s=document.createElement('script');s.src='https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js';
+        s.onload=function(){var s2=document.createElement('script');s2.src='https://www.gstatic.com/firebasejs/9.23.0/firebase-database-compat.js';
+        s2.onload=function(){try{firebase.initializeApp(FIREBASE_CONFIG);firebaseDB=firebase.database();updateSyncUI('online');listenForChanges();setupPresence();console.log('Firebase connected');}catch(e){console.warn(e);updateSyncUI('offline');}};
+        s2.onerror=function(){updateSyncUI('offline');};document.head.appendChild(s2);};
+        s.onerror=function(){updateSyncUI('offline');};document.head.appendChild(s);
+    }catch(e){updateSyncUI('offline');}
+}
+
+function updateSyncUI(mode){syncMode=mode;var bar=document.getElementById('syncBar'),lbl=document.getElementById('syncLabel');bar.className='sync-bar '+mode;if(mode==='online'){lbl.textContent='Live';bar.querySelector('i').className='fa-solid fa-wifi';}else{lbl.textContent='Offline';bar.querySelector('i').className='fa-solid fa-plug-circle-xmark';}}
+function handleSyncClick(){if(syncMode==='offline')checkSetupNeeded();else showToast(syncMode==='online'?'Connected — recipes sync live':'Local mode');}
+
+function pushToFirebase(){if(!firebaseDB)return;try{var c=JSON.parse(JSON.stringify(recipes));for(var i=0;i<c.length;i++)delete c[i]._i;firebaseDB.ref('recipes').set(c);}catch(e){}}
+
+function pullFromFirebase(cb){if(!firebaseDB){if(cb)cb(false);return;}firebaseDB.ref('recipes').once('value',function(snap){var d=snap.val();if(d&&Array.isArray(d)){var lf={};for(var f=0;f<recipes.length;f++){if(recipes[f].fav)lf[recipes[f]._id||'']=true;}recipes=d;for(var i=0;i<recipes.length;i++){if(!recipes[i]._id)recipes[i]._id=genId();if(lf[recipes[i]._id])recipes[i].fav=true;knownRecipeIds[recipes[i]._id]=true;}saveLocal();if(firebaseDB)pushToFirebase();if(cb)cb(true);}else{if(cb)cb(false);}},function(){if(cb)cb(false);});}
+
+function listenForChanges(){
+    if(!firebaseDB)return;
+    firebaseDB.ref('recipes').on('value',function(snap){
+        var d=snap.val();if(!d||!Array.isArray(d))return;
+        var lf={};for(var f=0;f<recipes.length;f++){if(recipes[f].fav)lf[recipes[f]._id||'']=true;}
+        recipes=d;
+        for(var i=0;i<recipes.length;i++){
+            if(!recipes[i]._id)recipes[i]._id=genId();
+            if(lf[recipes[i]._id])recipes[i].fav=true;
+            // Check admin notifs for new recipes
+            checkAdminNotifsForNewRecipe(recipes[i]);
+            // Check admin notifs for new comments
+            var cc=(recipes[i].comments||[]).length;
+            checkAdminNotifsForComments(recipes[i]._id,cc,(recipes[i].comments&&recipes[i].comments[0])?recipes[i].comments[0].userId:'',(recipes[i].comments&&recipes[i].comments[0])?recipes[i].comments[0].text:'');
+        }
+        saveLocal();render();
+    });
+}
+
+/* ========== PRESENCE ========== */
+function setupPresence(){
+    if(!firebaseDB||!currentUser)return;
+    if(myPresenceRef){try{myPresenceRef.remove();}catch(e){}}
+    var safeKey=currentUser.replace(/[.#$/\[\]]/g,'_');
+    myPresenceRef=firebaseDB.ref('presence/'+safeKey);
+    firebaseDB.ref('.info/connected').on('value',function(snap){
+        if(snap.val()===true){
+            myPresenceRef.onDisconnect().remove();
+            myPresenceRef.set({name:currentUser,displayName:getUserDisplayName(currentUser),photo:getUserPhoto(currentUser),joined:getUserJoined(currentUser),ts:firebase.database.ServerValue.TIMESTAMP});
+        }
+    });
+    firebaseDB.ref('presence').on('value',function(snap){
+        onlineUsers=snap.val()||{};
+        checkAdminNotifsForOnline();
+    });
+}
+
+/* ========== SETUP BANNER ========== */
+function checkSetupNeeded(){if(syncMode==='online'){document.getElementById('setupBanner').style.display='none';return;}var b=document.getElementById('setupBanner');b.innerHTML='<div class="setup-banner"><p><i class="fa-solid fa-triangle-exclamation"></i> Recipes saved locally only. Connect Firebase (free) to share across devices.</p><div class="setup-field"><label>Firebase Database URL</label><input type="text" id="setupDbUrl" placeholder="https://your-project.firebaseio.com" value="'+escAttr(localStorage.getItem('ndesanjo_firebase_url')||'')+'"></div><div class="setup-btns"><button class="setup-btn" onclick="connectFirebase()">Connect</button><button class="setup-skip" onclick="document.getElementById(\'setupBanner\').style.display=\'none\'">Skip</button></div></div>';b.style.display='block';}
+
+function connectFirebase(){
+    var url=document.getElementById('setupDbUrl').value.trim();
+    if(!url||!url.startsWith('https://')){showToast('Enter a valid Firebase URL');return;}
+    localStorage.setItem('ndesanjo_firebase_url',url);
+    var m=url.match(/https:\/\/([\w-]+)\./);
+    if(m){FIREBASE_CONFIG.databaseURL=url;FIREBASE_CONFIG.projectId=m[1];document.getElementById('setupBanner').innerHTML='<div class="setup-banner"><p><i class="fa-solid fa-spinner fa-spin"></i> Connecting...</p></div>';initFirebase();
+    setTimeout(function(){if(syncMode==='online'){pullFromFirebase(function(){document.getElementById('setupBanner').style.display='none';render();showToast('Connected! Recipes synced.');});}else{document.getElementById('setupBanner').innerHTML='<div class="setup-banner"><p><i class="fa-solid fa-circle-exclamation"></i> Failed. Check URL and database rules.</p><div class="setup-btns"><button class="setup-btn" onclick="checkSetupNeeded()">Retry</button><button class="setup-skip" onclick="document.getElementById(\'setupBanner\').style.display=\'none\'">Skip</button></div></div>';}},3500);
+    }else showToast('Invalid URL');
+}
+
+/* ========== TRANSLATION ========== */
+function detectLang(text){if(!text||!text.trim())return'en';var sw=0,total=0,swW=['na','ya','wa','ni','kwa','katika','hii','hizo','wote','pamoja','kisha','baada','kabla','ili','kwamba','sana','pia','bado','tena','ndani','nje','juu','chini','kulia','kushoto','leo','jana','kesho','sasa','hapa','pale','chakula','mapishi','viungo','mafuta','nyama','samaki','mayai','sukuma','ugali','mandazi','chai','maji','kuku','mboga','tamu','pika','osha','kata','changanya','weka','ondoa','sugua','paka','funika','bila','kupika','moja','mbili','tatu','nne','tano','sita','saba','nane','tisa','kumi','vikombe','vijiko','gramu','dakika','saa','joto','baridi','choma','chemsha','ongeza','sawa','vizuri','hatua','mwisho','mwanzo','tayari','karibu','kutoka','leta','chukua','fanya','habari','asante','karibu','kwaheri','ndiyo','hapana','chumvi','sukari','pilipili','kitunguu','nyanya','karoti','spinaji','magimbi','ndizi','tangawizi','dalasini','unga','supu','sosi','saladi','keki','matunda','kabichi','parachichi','mchuzi','dengu','maharage','limau','viazi','mchele','ngano','familia','nyumba','sokoni','meza','kiti','sahani','kijiko','kisu','moto','jiko','oven'];var w=text.toLowerCase().replace(/[^\w\s\u00C0-\u024F]/g,'').split(/\s+/);for(var i=0;i<w.length;i++){if(w[i].length<2)continue;total++;for(var j=0;j<swW.length;j++){if(w[i]===swW[j]||w[i].indexOf(swW[j])===0){sw++;break;}}}return(total>0&&sw/total>0.15)?'sw':'en';}
+async function translateTextAsync(text){if(!text||!text.trim())return text;var key=text.trim().toLowerCase(),det=detectLang(text);if(currentLang==='en'){if(det==='sw'){var ck='sw2en:'+key;if(translationCache[ck])return translationCache[ck];try{var r=await fetch('https://api.mymemory.translated.net/get?q='+encodeURIComponent(text)+'&langpair=sw|en');var d=await r.json();if(d.responseStatus===200&&d.responseData&&d.responseData.translatedText&&d.responseData.translatedText!==text){translationCache[ck]=d.responseData.translatedText;persistTC();return d.responseData.translatedText;}}catch(e){}return text;}}else{if(det==='en'){var ck2='en2sw:'+key;if(translationCache[ck2])return translationCache[ck2];try{var r2=await fetch('https://api.mymemory.translated.net/get?q='+encodeURIComponent(text)+'&langpair=en|sw');var d2=await r2.json();if(d2.responseStatus===200&&d2.responseData&&d2.responseData.translatedText&&d2.responseData.translatedText!==text){translationCache[ck2]=d2.responseData.translatedText;persistTC();return d2.responseData.translatedText;}}catch(e){}return text;}}return text;}
+function persistTC(){try{var s=JSON.stringify(translationCache);if(s.length<3000000)localStorage.setItem('ndesanjo_translations',s);}catch(e){}}
+async function translateAllTexts(){var all=[],seen={};for(var i=0;i<recipes.length;i++){var r=recipes[i],fields=[r.title];for(var j=0;j<r.ingredients.length;j++)fields.push(r.ingredients[j]);for(var k=0;k<r.instructions.length;k++)fields.push(r.instructions[k]);for(var c=0;c<(r.comments||[]).length;c++){var ct=r.comments[c].text;if(ct)fields.push(ct);}for(var f=0;f<fields.length;f++){var t=fields[f];if(!t||!t.trim())continue;var key=t.trim().toLowerCase();if(seen[key])continue;seen[key]=true;var det=detectLang(t);if((currentLang==='en'&&det==='sw')||(currentLang==='sw'&&det==='en'))all.push(t);}}for(var b=0;b<all.length;b+=5){await Promise.all(all.slice(b,b+5).map(function(t){return translateTextAsync(t);}));}}
+function tx(text){if(!text)return text;var key=text.trim().toLowerCase(),det=detectLang(text);if(currentLang==='en'){if(det==='sw'){var c=translationCache['sw2en:'+key];if(c)return c;}}else{if(det==='en'){var c2=translationCache['en2sw:'+key];if(c2)return c2;}}return text;}
+function txCat(cat){var m={Breakfast:{en:'Breakfast',sw:'Kiamsha Kinywa'},Lunch:{en:'Lunch',sw:'Chakula cha Mchana'},Dinner:{en:'Dinner',sw:'Chakula cha Jioni'},Dessert:{en:'Dessert',sw:'Tamu'}};return(m[cat]&&m[cat][currentLang])||cat;}
+
+/* ========== UI STRINGS ========== */
+var ui={search_placeholder:{en:'Search recipes...',sw:'Tafuta mapishi...'},fav_title:{en:'Favorites',sw:'Vipendwa'},saved_label:{en:'saved',sw:'imehifadhiwa'},grid_tab:{en:'GRID',sw:'GRIDI'},list_tab:{en:'LIST',sw:'ORODHA'},all_recipes:{en:'All Recipes',sw:'Mapishi Yote'},recipe_label:{en:'recipe',sw:'mapishi'},recipes_label:{en:'recipes',sw:'mapishi'},new_recipe:{en:'New Recipe',sw:'Mapishi Mpya'},recipe_name:{en:'Recipe Name',sw:'Jina la Mapishi'},name_placeholder:{en:'What are you cooking?',sw:'Unapika nini?'},category:{en:'Category',sw:'Kundi'},ingredients_label:{en:'Ingredients (one per line)',sw:'Viungo (moja kwa kila mstari)'},instructions_label:{en:'Instructions (one per line)',sw:'Maelekezo (moja kwa kila mstari)'},photos:{en:'Photos',sw:'Picha'},save_recipe:{en:'Save Recipe',sw:'Hifadhi Mapishi'},update_recipe:{en:'Update Recipe',sw:'Bosha Mapishi'},posted_by:{en:'Posted by',sw:'Imewekwa na'},ingredients_title:{en:'Ingredients',sw:'Viungo'},instructions_title:{en:'Instructions',sw:'Maelekezo'},comments_title:{en:'Comments',sw:'Maoni'},comment_placeholder:{en:'Add a comment...',sw:'Ongeza maoni...'},added_fav:{en:'Added to favorites',sw:'Imeongezwa kwenye vipendwa'},removed_fav:{en:'Removed from favorites',sw:'Imeondolewa kwenye vipendwa'},deleted:{en:'Recipe deleted',sw:'Mapishi yamefutwa'},saved_msg:{en:'Recipe saved',sw:'Mapishi yamehifadhiwa'},updated_msg:{en:'Recipe updated',sw:'Mapishi yameboshewa'},empty_title:{en:'No recipes found',sw:'Hakuna mapishi'},empty_sub:{en:'Tap + to add your first recipe',sw:'Bonyeza + kuongeza mapishi'},saved_indicator:{en:'Saved',sw:'Imehifadhiwa'},confirm_delete:{en:'Delete this recipe?',sw:'Futa mapishi hii?'},translating:{en:'Translating...',sw:'Inatafsiri...'},views:{en:'views',sw:'mara kuangaliwa'},likes:{en:'likes',sw:'mapendano'},comments_count:{en:'comments',sw:'maoni'},story_all:{en:'All',sw:'Yote'},story_favorites:{en:'Favorites',sw:'Vipendwa'},story_breakfast:{en:'Breakfast',sw:'Kiamsha Kinywa'},story_lunch:{en:'Lunch',sw:'Chakula Mchana'},story_dinner:{en:'Dinner',sw:'Chakula Jioni'},story_dessert:{en:'Dessert',sw:'Tamu'},link_copied:{en:'Link copied!',sw:'Kiungo imenakiliwa!'},share_text:{en:'Check out this recipe:',sw:'Angalia mapishi hii:'},input_lang_en:{en:'Write in any language — detected as English',sw:'Andika kwa lugha yoyote — imetambuliwa kama Kiingereza'},input_lang_sw:{en:'Write in any language — detected as Swahili',sw:'Andika kwa lugha yoyote — imetambuliwa kama Kiswahili'},recipes_by:{en:'Recipes by',sw:'Mapishi ya'},edit_profile:{en:'Edit Profile',sw:'Hariri Wasifu'},save_changes:{en:'Save Changes',sw:'Hifadhi Mabadiliko'},logout:{en:'Logout',sw:'Toka'},no_bio:{en:'No bio yet',sw:'Hakuna bio bado'},joined:{en:'Joined',sw:'Alijiunga'}};
 function t(key){return ui[key]?(ui[key][currentLang]||ui[key].en):key;}
 
-/* PERSISTENCE */
-function save(){try{localStorage.setItem('ndesanjo_recipes',JSON.stringify(recipes));showSaveIndicator();}catch(e){showToast(t('storage_full'));}}
-function showSaveIndicator(){var el=document.getElementById('saveIndicator');document.getElementById('savedText').textContent=t('saved_indicator');el.classList.add('show');clearTimeout(saveTimeout);saveTimeout=setTimeout(function(){el.classList.remove('show');},1800);}
+function updateUIStrings(){
+    document.getElementById('search').placeholder=t('search_placeholder');document.getElementById('favTitle').textContent=t('fav_title');
+    document.getElementById('tabGrid').textContent=t('grid_tab');document.getElementById('tabList').textContent=t('list_tab');
+    document.getElementById('sectionTitle').textContent=currentView==='Favorites'?t('story_favorites'):t('all_recipes');
+    document.getElementById('addHeader').childNodes[0].textContent='\n    '+t('new_recipe')+'\n    ';
+    document.getElementById('lblName').textContent=t('recipe_name');document.getElementById('fTitle').placeholder=t('name_placeholder');
+    document.getElementById('lblCat').textContent=t('category');document.getElementById('lblIng').textContent=t('ingredients_label');
+    document.getElementById('lblInst').textContent=t('instructions_label');
+    document.getElementById('ingHint').textContent=currentLang==='en'?t('input_lang_en'):t('input_lang_sw');
+    document.getElementById('instHint').textContent=currentLang==='en'?t('input_lang_en'):t('input_lang_sw');
+    document.getElementById('lblPhoto').textContent=t('photos');document.getElementById('lblAuthor').textContent=t('posted_by');
+    document.getElementById('fAuthor').value=currentUser||'';
+    document.getElementById('submitBtn').textContent=document.getElementById('editIndex').value===''?t('save_recipe'):t('update_recipe');
+    var sel=document.getElementById('fCategory'),sv=sel.value;for(var i=0;i<sel.options.length;i++)sel.options[i].textContent=txCat(catValues[i]);sel.value=sv;
+}
 
-/* LANGUAGE */
-var isTranslating=false;
-async function toggleLang(){if(isTranslating)return;isTranslating=true;currentLang=currentLang==='en'?'sw':'en';document.getElementById('langLabel').textContent=currentLang==='en'?'SW':'EN';try{localStorage.setItem('ndesanjo_lang',currentLang);}catch(e){}updateUIStrings();renderStories();document.getElementById('langLoadingText').textContent=t('translating');document.getElementById('langLoading').classList.add('show');document.getElementById('langBtn').style.opacity='0.5';document.getElementById('langBtn').style.pointerEvents='none';try{await translateAllTexts();}catch(e){}document.getElementById('langLoading').classList.remove('show');document.getElementById('langBtn').style.opacity='';document.getElementById('langBtn').style.pointerEvents='';render();if(viewingIndex>=0)openView(viewingIndex);isTranslating=false;}
+/* ========== LANGUAGE ========== */
+async function toggleLang(){if(isTranslating)return;isTranslating=true;currentLang=currentLang==='en'?'sw':'en';document.getElementById('langLabel').textContent=currentLang==='en'?'SW':'EN';try{localStorage.setItem('ndesanjo_lang',currentLang);}catch(e){}updateUIStrings();renderStories();document.getElementById('langLoadingText').textContent=t('translating');document.getElementById('langLoading').classList.add('show');document.getElementById('langBtn').style.opacity='.5';document.getElementById('langBtn').style.pointerEvents='none';try{await translateAllTexts();}catch(e){}document.getElementById('langLoading').classList.remove('show');document.getElementById('langBtn').style.opacity='';document.getElementById('langBtn').style.pointerEvents='';render();if(viewingIndex>=0)openView(viewingIndex);isTranslating=false;}
 
-function getInputLangHint() { return currentLang === 'en' ? t('input_lang_en') : t('input_lang_sw'); }
-
-function updateUIStrings(){document.getElementById('search').placeholder=t('search_placeholder');document.getElementById('favTitle').textContent=t('fav_title');document.getElementById('tabGrid').textContent=t('grid_tab');document.getElementById('tabList').textContent=t('list_tab');document.getElementById('sectionTitle').textContent=t('all_recipes');document.getElementById('addHeader').childNodes[0].textContent='\n    '+t('new_recipe')+'\n    ';document.getElementById('lblName').textContent=t('recipe_name');document.getElementById('fTitle').placeholder=t('name_placeholder');document.getElementById('lblCat').textContent=t('category');document.getElementById('lblIng').textContent=t('ingredients_label');document.getElementById('lblInst').textContent=t('instructions_label');document.getElementById('ingHint').textContent=getInputLangHint();document.getElementById('instHint').textContent=getInputLangHint();document.getElementById('lblPhoto').textContent=t('photos');document.getElementById('lblAuthor').textContent=t('posted_by');document.getElementById('fAuthor').value=currentUser||'';document.getElementById('submitBtn').textContent=document.getElementById('editIndex').value===''?t('save_recipe'):t('update_recipe');var sel=document.getElementById('fCategory'),sv=sel.value;for(var i=0;i<sel.options.length;i++)sel.options[i].textContent=txCat(catValues[i]);sel.value=sv;}
-
-function renderStories(){var cats=['all','Favorites','Breakfast','Lunch','Dinner','Dessert'];var lk=['story_all','story_favorites','story_breakfast','story_lunch','story_dinner','story_dessert'];var h='';for(var i=0;i<cats.length;i++){var a=currentView===cats[i]?' active':'';h+='<div class="story'+a+'" onclick="setView(\''+cats[i]+'\')"><div class="story-ring"><div class="story-ring-inner">'+categoryIcons[cats[i]]+'</div></div><div class="story-label">'+t(lk[i])+'</div></div>';}document.getElementById('stories').innerHTML=h;}
+/* ========== STORIES / TABS / RENDER ========== */
+function renderStories(){var cats=['all','Favorites','Breakfast','Lunch','Dinner','Dessert'],lk=['story_all','story_favorites','story_breakfast','story_lunch','story_dinner','story_dessert'],h='';for(var i=0;i<cats.length;i++){var a=currentView===cats[i]?' active':'';h+='<div class="story'+a+'" onclick="setView(\''+cats[i]+'\')"><div class="story-ring"><div class="story-ring-inner">'+categoryIcons[cats[i]]+'</div></div><div class="story-label">'+t(lk[i])+'</div></div>';}document.getElementById('stories').innerHTML=h;}
 function setView(v){currentView=v;document.getElementById('sectionTitle').textContent=currentView==='Favorites'?t('story_favorites'):t('all_recipes');renderStories();render();}
 function setTab(tab,el){currentTab=tab;var tabs=document.querySelectorAll('.tab');for(var i=0;i<tabs.length;i++)tabs[i].classList.remove('active');el.classList.add('active');render();}
 
-function getFiltered(){var q=document.getElementById('search').value.toLowerCase().trim(),res=[];var banned=getBanned(),bannedNames={};for(var bi=0;bi<banned.length;bi++)bannedNames[banned[bi].name.toLowerCase()]=true;for(var i=0;i<recipes.length;i++){var r=recipes[i];var titleEn=r.title.toLowerCase(),titleTr=tx(r.title).toLowerCase();if(q&&titleEn.indexOf(q)===-1&&titleTr.indexOf(q)===-1)continue;if(currentView==='Favorites'&&!r.fav)continue;if(currentView!=='all'&&currentView!=='Favorites'&&r.category!==currentView)continue;if(!isAdminUser()&&r.ownerId&&bannedNames[r.ownerId])continue;var c={};for(var k in r)c[k]=r[k];c._i=i;res.push(c);}return res;}
-function getRecipeFirstImage(r){return(r.images&&r.images.length>0)?r.images[0]:(r.image||'');}
-function getRecipeImageCount(r){return(r.images?r.images.length:0)+(r.image&&(!r.images||r.images.length===0)?1:0);}
+function getFiltered(){var q=document.getElementById('search').value.toLowerCase().trim(),res=[];var banned=getBanned(),bn={};for(var bi=0;bi<banned.length;bi++)bn[banned[bi].name.toLowerCase()]=true;for(var i=0;i<recipes.length;i++){var r=recipes[i],te=r.title.toLowerCase(),tt=tx(r.title).toLowerCase();if(q&&te.indexOf(q)===-1&&tt.indexOf(q)===-1)continue;if(currentView==='Favorites'&&!r.fav)continue;if(currentView!=='all'&&currentView!=='Favorites'&&r.category!==currentView)continue;if(!isAdminUser()&&r.ownerId&&bn[r.ownerId])continue;var c={};for(var k in r)c[k]=r[k];c._i=i;res.push(c);}return res;}
+function getFirstImg(r){return(r.images&&r.images.length>0)?r.images[0]:(r.image||'');}
+function getImgCount(r){return(r.images?r.images.length:0)+(r.image&&(!r.images||r.images.length===0)?1:0);}
 
-function render(){var filtered=getFiltered();var rl=filtered.length===1?t('recipe_label'):t('recipes_label');document.getElementById('sectionCount').textContent=filtered.length+' '+rl;var favs=[];for(var f=0;f<recipes.length;f++){if(recipes[f].fav)favs.push({r:recipes[f],idx:f});}var fs=document.getElementById('favSection');if(favs.length>0&&currentView!=='Favorites'){fs.style.display='block';document.getElementById('favCount').textContent=favs.length+' '+t('saved_label');var fh='';for(var fi=0;fi<favs.length;fi++){var fr=favs[fi].r,fidx=favs[fi].idx;var img=getRecipeFirstImage(fr);var ip=img?'<img class="fav-card-img" src="'+img+'" loading="lazy">':'<div class="fav-card-placeholder">'+getCatEmoji(fr.category)+'</div>';fh+='<div class="fav-card" onclick="openView('+fidx+')">'+ip+'<div class="fav-card-body"><div class="fav-card-title">'+escHtml(tx(fr.title))+'</div><div class="fav-card-cat">'+txCat(fr.category)+'</div></div></div>';}document.getElementById('favRow').innerHTML=fh;}else{fs.style.display='none';}var main=document.getElementById('mainContent');if(filtered.length===0){main.innerHTML='<div class="empty-state"><i class="fa-solid fa-bowl-rice"></i><p>'+t('empty_title')+'</p><span>'+t('empty_sub')+'</span></div>';return;}if(currentTab==='grid'){var gh='<div class="recipe-grid">';for(var gi=0;gi<filtered.length;gi++){var gr=filtered[gi];var img=getRecipeFirstImage(gr);var imgCount=getRecipeImageCount(gr);var gimg=img?'<img src="'+img+'" loading="lazy">':'<div class="grid-placeholder"><i class="fa-solid fa-utensils"></i>'+escHtml(tx(gr.title))+'</div>';var dotsHtml=imgCount>1?'<div class="grid-gallery-dots">'+'<div class="grid-gallery-dot"></div>'.repeat(Math.min(imgCount,4))+'</div>':'';gh+='<div class="grid-item" onclick="openView('+gr._i+')">'+gimg+dotsHtml+'<div class="grid-overlay"><div class="grid-stat"><i class="fa-solid fa-eye"></i>'+formatNum(gr.views||0)+'</div><div class="grid-stat"><i class="fa-solid fa-heart"></i>'+formatNum(gr.likes||0)+'</div><div class="grid-stat"><i class="fa-solid fa-comment"></i>'+formatNum((gr.comments||[]).length)+'</div></div></div>';}gh+='</div>';main.innerHTML=gh;}else{var lh='';for(var li=0;li<filtered.length;li++){var lr=filtered[li];var limg=getRecipeFirstImage(lr);var limgCount=getRecipeImageCount(lr);var lt=limg?'<img class="list-thumb" src="'+limg+'" loading="lazy">':'<div class="list-thumb-placeholder">'+getCatEmoji(lr.category)+'</div>';var ling='';for(var lii=0;lii<Math.min(3,lr.ingredients.length);lii++){if(lii>0)ling+=', ';ling+=escHtml(tx(lr.ingredients[lii]));}if(lr.ingredients.length>3)ling+=' ...';var badgeHtml=limgCount>1?'<div class="list-gallery-badge"><i class="fa-solid fa-images"></i> '+limgCount+'</div>':'';lh+='<div class="list-card" onclick="openView('+lr._i+')" style="position:relative;">'+lt+'<div class="list-body"><div class="list-title">'+escHtml(tx(lr.title))+'</div><div class="list-cat">'+txCat(lr.category)+'</div><div class="list-desc">'+ling+'</div><div class="list-stats"><span><i class="fa-solid fa-eye"></i>'+formatNum(lr.views||0)+'</span><span><i class="fa-solid fa-heart"></i>'+formatNum(lr.likes||0)+'</span><span><i class="fa-solid fa-comment"></i>'+formatNum((lr.comments||[]).length)+'</span></div></div>'+badgeHtml+'</div>';}main.innerHTML=lh;}}
-
-/* GALLERY */
-function getAllImages(r){var imgs=[];if(r.images&&r.images.length>0){for(var i=0;i<r.images.length;i++)imgs.push(r.images[i]);}if(r.image&&imgs.indexOf(r.image)===-1)imgs.unshift(r.image);return imgs;}
-function renderModalGallery(imgs,slideIdx){var el=document.getElementById('modalImage');if(imgs.length===0){el.innerHTML='<div class="modal-gallery-main-placeholder">'+getCatEmoji(recipes[viewingIndex].category)+'</div>';return;}if(imgs.length===1){el.innerHTML='<img class="modal-gallery-main" src="'+imgs[0]+'">';return;}var dotsHtml='';for(var d=0;d<imgs.length;d++)dotsHtml+='<button class="modal-gallery-dot'+(d===slideIdx?' active':'')+'" onclick="slideGallery('+d+')"></button>';el.innerHTML='<img class="modal-gallery-main" src="'+imgs[slideIdx]+'">'+'<button class="modal-gallery-nav modal-gallery-prev visible" onclick="slideGallery('+((slideIdx-1+imgs.length)%imgs.length)+')"><i class="fa-solid fa-chevron-left"></i></button>'+'<button class="modal-gallery-nav modal-gallery-next visible" onclick="slideGallery('+((slideIdx+1)%imgs.length)+')"><i class="fa-solid fa-chevron-right"></i></button>'+'<div class="modal-gallery-dots">'+dotsHtml+'</div>'+'<div class="modal-gallery-count">'+(slideIdx+1)+' / '+imgs.length+'</div>';}
-function slideGallery(idx){var r=recipes[viewingIndex];if(!r)return;var imgs=getAllImages(r);currentGallerySlide=idx;var mainImg=document.querySelector('.modal-gallery-main');if(mainImg){mainImg.style.opacity='0';setTimeout(function(){renderModalGallery(imgs,idx);},150);}}
-
-/* VIEW MODAL with on-demand translation */
-async function openView(i){
-    viewingIndex=i;
-    var r=recipes[i];
-    if(!r)return;
-    if(!r.views)r.views=0;
-    r.views++;
-    save();
-    currentGallerySlide=0;
-    var authorPhoto=r.author?getUserPhoto(r.author):'';
-    var avatarEl=document.getElementById('modalAvatar');
-    if(authorPhoto){
-        avatarEl.innerHTML='<img src="'+authorPhoto+'">';
-    }else{
-        avatarEl.innerHTML=getCatEmoji(r.category);
-    }
-    document.getElementById('modalCat').textContent=txCat(r.category);
-    document.getElementById('modalUser').textContent=r.author?getUserDisplayName(r.author):t('ndesanjo_family');
-    var imgs=getAllImages(r);
-    renderModalGallery(imgs,0);
-    // Translate title, ingredients, instructions on the fly
-    var translatedTitle = await translateTextAsync(r.title);
-    var translatedIngredients = await Promise.all(r.ingredients.map(ing => translateTextAsync(ing)));
-    var translatedInstructions = await Promise.all(r.instructions.map(inst => translateTextAsync(inst)));
-    var ih = '';
-    for(var ii=0;ii<translatedIngredients.length;ii++) ih+='<li><span class="ing-dot"></span>'+escHtml(translatedIngredients[ii])+'</li>';
-    var jh = '';
-    for(var ij=0;ij<translatedInstructions.length;ij++) jh+='<li>'+escHtml(translatedInstructions[ij])+'</li>';
-    document.getElementById('modalBody').innerHTML='<div class="modal-title">'+escHtml(translatedTitle)+'</div><div class="modal-section-label">'+t('ingredients_title')+'</div><ul class="modal-ingredients">'+ih+'</ul><div class="modal-section-label">'+t('instructions_title')+'</div><ol class="modal-instructions">'+jh+'</ol>';
-    document.getElementById('modalStats').innerHTML='<span><i class="fa-solid fa-eye"></i> '+formatNum(r.views)+' '+t('views')+'</span><span><i class="fa-solid fa-heart"></i> '+formatNum(r.likes||0)+' '+t('likes')+'</span><span><i class="fa-solid fa-comment"></i> '+formatNum((r.comments||[]).length)+' '+t('comments_count')+'</span>';
-    var isOwner=r.ownerId&&r.ownerId===currentUser,isAdm=isAdminUser();
-    var hc=r.fav?' liked':'',hi=r.fav?'fa-solid':'fa-regular';
-    var fh='<button class="modal-action-btn'+hc+'" onclick="toggleFav('+i+')" aria-label="Favorite"><i class="'+hi+' fa-heart"></i></button>';
-    fh+='<button class="modal-action-btn modal-share-btn" onclick="openShareBar('+i+')" aria-label="Share"><i class="fa-solid fa-share-nodes"></i></button>';
-    if(isOwner||isAdm)fh+='<button class="modal-action-btn" onclick="editRecipe('+i+')" aria-label="Edit"><i class="fa-regular fa-pen-to-square"></i></button><span class="modal-action-spacer"></span><button class="modal-action-btn delete-btn" onclick="deleteRecipe('+i+')" aria-label="Delete"><i class="fa-regular fa-trash-can"></i></button>';
-    else fh+='<span class="modal-action-spacer"></span>';
-    document.getElementById('modalFooter').innerHTML=fh;
-    renderComments(i);
-    document.getElementById('viewModal').classList.add('show');
-    document.body.style.overflow='hidden';
+function render(){
+    var filtered=getFiltered(),rl=filtered.length===1?t('recipe_label'):t('recipes_label');document.getElementById('sectionCount').textContent=filtered.length+' '+rl;
+    var favs=[];for(var f=0;f<recipes.length;f++){if(recipes[f].fav)favs.push({r:recipes[f],idx:f});}
+    var fs=document.getElementById('favSection');
+    if(favs.length>0&&currentView!=='Favorites'){fs.style.display='block';document.getElementById('favCount').textContent=favs.length+' '+t('saved_label');var fh='';for(var fi=0;fi<favs.length;fi++){var fr=favs[fi].r,img=getFirstImg(fr);fh+='<div class="fav-card" onclick="openView('+favs[fi].idx+')">'+(img?'<img class="fav-card-img" src="'+img+'" loading="lazy">':'<div class="fav-card-placeholder">'+getCatEmoji(fr.category)+'</div>')+'<div class="fav-card-body"><div class="fav-card-title">'+escHtml(tx(fr.title))+'</div><div class="fav-card-cat">'+txCat(fr.category)+'</div></div></div>';}document.getElementById('favRow').innerHTML=fh;}else fs.style.display='none';
+    var main=document.getElementById('mainContent');
+    if(filtered.length===0){main.innerHTML='<div class="empty-state"><i class="fa-solid fa-bowl-rice"></i><p>'+t('empty_title')+'</p><span>'+t('empty_sub')+'</span></div>';return;}
+    if(currentTab==='grid'){var gh='<div class="recipe-grid">';for(var gi=0;gi<filtered.length;gi++){var gr=filtered[gi],img=getFirstImg(gr),ic=getImgCount(gr);gh+='<div class="grid-item" onclick="openView('+gr._i+')">'+(img?'<img src="'+img+'" loading="lazy">':'<div class="grid-placeholder"><i class="fa-solid fa-utensils"></i>'+escHtml(tx(gr.title))+'</div>')+(ic>1?'<div class="grid-gallery-dots">'+'<div class="grid-gallery-dot"></div>'.repeat(Math.min(ic,4))+'</div>':'')+'<div class="grid-overlay"><div class="grid-stat"><i class="fa-solid fa-eye"></i>'+formatNum(gr.views||0)+'</div><div class="grid-stat"><i class="fa-solid fa-heart"></i>'+formatNum(gr.likes||0)+'</div><div class="grid-stat"><i class="fa-solid fa-comment"></i>'+formatNum((gr.comments||[]).length)+'</div></div></div>';}gh+='</div>';main.innerHTML=gh;}
+    else{var lh='';for(var li=0;li<filtered.length;li++){var lr=filtered[li],img=getFirstImg(lr),ic=getImgCount(lr),ing='';for(var ii=0;ii<Math.min(3,lr.ingredients.length);ii++){if(ii>0)ing+=', ';ing+=escHtml(tx(lr.ingredients[ii]));}if(lr.ingredients.length>3)ing+=' ...';lh+='<div class="list-card" onclick="openView('+lr._i+')">'+(img?'<img class="list-thumb" src="'+img+'" loading="lazy">':'<div class="list-thumb-placeholder">'+getCatEmoji(lr.category)+'</div>')+'<div class="list-body"><div class="list-title">'+escHtml(tx(lr.title))+'</div><div class="list-cat">'+txCat(lr.category)+'</div><div class="list-desc">'+ing+'</div><div class="list-stats"><span><i class="fa-solid fa-eye"></i>'+formatNum(lr.views||0)+'</span><span><i class="fa-solid fa-heart"></i>'+formatNum(lr.likes||0)+'</span><span><i class="fa-solid fa-comment"></i>'+formatNum((lr.comments||[]).length)+'</span></div></div>'+(ic>1?'<div class="list-gallery-badge"><i class="fa-solid fa-images"></i> '+ic+'</div>':'')+'</div>';}main.innerHTML=lh;}
 }
 
-/* SHARING */
-function openShareBar(i){shareRecipeIndex=i;document.getElementById('shareBar').classList.add('show');}
-function closeShareBar(){document.getElementById('shareBar').classList.remove('show');shareRecipeIndex=-1;}
-function getShareText(i){var r=recipes[i];if(!r)return '';return t('share_text')+' '+r.title+' ('+txCat(r.category)+')';}
-function shareWhatsApp(){window.open('https://wa.me/?text='+encodeURIComponent(getShareText(shareRecipeIndex)),'_blank');closeShareBar();}
-function shareTwitter(){window.open('https://twitter.com/intent/tweet?text='+encodeURIComponent(getShareText(shareRecipeIndex)),'_blank');closeShareBar();}
-function shareFacebook(){window.open('https://www.facebook.com/sharer/sharer.php?quote='+encodeURIComponent(getShareText(shareRecipeIndex)),'_blank');closeShareBar();}
-function copyRecipeLink(){var r=recipes[shareRecipeIndex];var data={t:r.title,c:r.category,i:r.ingredients,s:r.instructions,a:r.author};var encoded=btoa(unescape(encodeURIComponent(JSON.stringify(data))));var url=window.location.origin+window.location.pathname+'#recipe='+encoded;if(navigator.clipboard){navigator.clipboard.writeText(url).then(function(){showToast(t('link_copied'));});}else{var ta=document.createElement('textarea');ta.value=url;ta.style.position='fixed';ta.style.opacity='0';document.body.appendChild(ta);ta.select();document.execCommand('copy');document.body.removeChild(ta);showToast(t('link_copied'));}closeShareBar();}
-function checkSharedRecipe(){var hash=window.location.hash;if(hash.indexOf('#recipe=')===0){try{var json=decodeURIComponent(escape(atob(hash.substring(8))));var data=JSON.parse(json);var exists=false;for(var i=0;i<recipes.length;i++){if(recipes[i].title===data.t&&recipes[i].author===data.a){exists=true;openView(i);break;}}if(!exists){recipes.push({title:data.t,category:data.c||'Dinner',ingredients:data.i||[],instructions:data.s||[],image:'',images:[],author:data.a||'Shared',ownerId:currentUser||'',views:0,likes:0,fav:false,comments:[]});save();render();openView(recipes.length-1);}history.replaceState(null,'',window.location.pathname);}catch(e){}}}
+/* ========== GALLERY ========== */
+function getAllImgs(r){var imgs=[];if(r.images&&r.images.length>0)for(var i=0;i<r.images.length;i++)imgs.push(r.images[i]);if(r.image&&imgs.indexOf(r.image)===-1)imgs.unshift(r.image);return imgs;}
+function renderGallery(imgs,idx){var el=document.getElementById('modalImage');if(!imgs.length){el.innerHTML='<div class="modal-gallery-main-placeholder">'+getCatEmoji(recipes[viewingIndex].category)+'</div>';return;}if(imgs.length===1){el.innerHTML='<img class="modal-gallery-main" src="'+imgs[0]+'">';return;}var dots='';for(var d=0;d<imgs.length;d++)dots+='<button class="modal-gallery-dot'+(d===idx?' active':'')+'" onclick="slideGallery('+d+')"></button>';el.innerHTML='<img class="modal-gallery-main" src="'+imgs[idx]+'"><button class="modal-gallery-nav modal-gallery-prev visible" onclick="slideGallery('+((idx-1+imgs.length)%imgs.length)+')"><i class="fa-solid fa-chevron-left"></i></button><button class="modal-gallery-nav modal-gallery-next visible" onclick="slideGallery('+((idx+1)%imgs.length)+')"><i class="fa-solid fa-chevron-right"></i></button><div class="modal-gallery-dots">'+dots+'</div><div class="modal-gallery-count">'+(idx+1)+' / '+imgs.length+'</div>';}
+function slideGallery(idx){var r=recipes[viewingIndex];if(!r)return;var imgs=getAllImgs(r);var m=document.querySelector('.modal-gallery-main');if(m){m.style.opacity='0';setTimeout(function(){renderGallery(imgs,idx);},150);}}
 
-/* COMMENTS */
-var EMOJI_LIST=['\u{1F600}','\u{1F603}','\u{1F604}','\u{1F601}','\u{1F606}','\u{1F605}','\u{1F923}','\u{1F602}','\u{1F642}','\u{1F609}','\u{1F60A}','\u{1F607}','\u{1F970}','\u{1F60D}','\u{1F929}','\u{1F618}','\u{1F617}','\u{1F61A}','\u{1F619}','\u{1F972}','\u{1F60B}','\u{1F61B}','\u{1F61C}','\u{1F92A}','\u{1F61D}','\u{1F911}','\u{1F917}','\u{1F92D}','\u{1F92B}','\u{1F914}','\u{1F910}','\u{1F928}','\u{1F610}','\u{1F611}','\u{1F636}','\u{1F60F}','\u{1F612}','\u{1F644}','\u{1F62C}','\u{1F60C}','\u{1F614}','\u{1F62A}','\u{1F924}','\u{1F634}','\u{1F637}','\u{1F912}','\u{1F915}','\u{1F922}','\u{1F92E}','\u{1F927}','\u{1F975}','\u{1F976}','\u{1F973}','\u{1F60E}','\u{1F913}','\u{1F9D0}','\u{1F615}','\u{1F61F}','\u{1F641}','\u{2639}\uFE0F','\u{1F62E}','\u{1F62F}','\u{1F633}','\u{1F63F}','\u{1F626}','\u{1F627}','\u{1F628}','\u{1F630}','\u{1F625}','\u{1F622}','\u{1F62D}','\u{1F631}','\u{1F616}','\u{1F623}','\u{1F61E}','\u{1F613}','\u{1F629}','\u{1F62B}','\u{1F971}','\u{1F624}','\u{1F621}','\u{1F620}','\u{1F92C}','\u{1F44D}','\u{1F44E}','\u{1F44F}','\u{1F64C}','\u{1F91D}','\u{1F64F}','\u{1F4AA}','\u{1F525}','\u2764\uFE0F','\u{1F495}','\u{1F496}','\u{1F497}','\u{1F494}','\u{1F4AF}','\u{2728}','\u{1F389}','\u{1F38A}','\u{1F31F}','\u{2B50}','\u{1F373}','\u{1F370}','\u{1F381}','\u{1F36B}','\u{2615}','\u{1F377}','\u{1F37A}'];
-
-async function renderComments(i){
-    var r=recipes[i];
-    if(!r)return;
-    if(!r.comments)r.comments=[];
-    var sec=document.getElementById('commentsSection'),listHtml='';
-    if(r.comments.length===0){
-        listHtml='<div class="no-comments">'+t('comment_placeholder')+'</div>';
-    }else{
-        for(var c=0;c<r.comments.length;c++){
-            var cm=r.comments[c];
-            var translatedText = await translateTextAsync(cm.text);
-            var cmPhoto=cm.userId?getUserPhoto(cm.userId):'';
-            var avInner=cmPhoto?'<img src="'+cmPhoto+'">':escHtml(cm.name?cm.name.charAt(0).toUpperCase():'?');
-            listHtml+='<div class="comment-item" style="animation-delay:'+(c*0.05)+'s"><div class="comment-avatar">'+avInner+'</div><div class="comment-body"><div class="comment-name">'+escHtml(cm.name)+'</div><div class="comment-text">'+escHtml(translatedText)+'</div><div class="comment-time">'+timeAgo(cm.time)+'</div></div></div>';
-        }
-    }
-    var egHtml='';
-    for(var e=0;e<EMOJI_LIST.length;e++) egHtml+='<span onclick="insertEmoji(\''+EMOJI_LIST[e].replace(/'/g,"\\'")+'\')">'+EMOJI_LIST[e]+'</span>';
-    sec.innerHTML='<div class="modal-section-label">'+t('comments_title')+'</div><div class="comments-list" id="commentsList">'+listHtml+'</div><div class="comment-input-wrap"><textarea class="comment-input" id="commentInput" placeholder="'+t('comment_placeholder')+'"></textarea><button class="emoji-btn" onclick="toggleEmojiPicker()" type="button"><i class="fa-regular fa-face-smile"></i></button><div class="emoji-picker" id="emojiPicker"><div class="emoji-grid" id="emojiGrid">'+egHtml+'</div></div><button class="comment-send" onclick="postComment('+i+')" type="button"><i class="fa-solid fa-paper-plane"></i></button></div>';
-}
-function toggleEmojiPicker(){document.getElementById('emojiPicker').classList.toggle('show');}
-function insertEmoji(em){var inp=document.getElementById('commentInput');inp.value+=em;inp.focus();}
-function postComment(i){var inp=document.getElementById('commentInput'),text=inp.value.trim();if(!text||!currentUser)return;var r=recipes[i];if(!r.comments)r.comments=[];r.comments.unshift({name:getUserDisplayName(currentUser),text:text,time:Date.now(),userId:currentUser});save();renderComments(i);inp.value='';}
+/* ========== VIEW MODAL ========== */
+async function openView(i){viewingIndex=i;var r=recipes[i];if(!r)return;if(!r.views)r.views=0;r.views++;save();currentGallerySlide=0;var ap=r.author?getUserPhoto(r.author):'',avEl=document.getElementById('modalAvatar');avEl.innerHTML=ap?'<img src="'+ap+'">':getCatEmoji(r.category);avEl.onclick=function(){closeViewForce();openProfile(r.author||r.ownerId);};document.getElementById('modalCat').textContent=txCat(r.category);var mu=document.getElementById('modalUser');mu.textContent=r.author?getUserDisplayName(r.author):'Ndesanjo Family';mu.onclick=function(){closeViewForce();openProfile(r.author||r.ownerId);};mu.style.cursor='pointer';renderGallery(getAllImgs(r),0);var tt=await translateTextAsync(r.title),ti=await Promise.all(r.ingredients.map(function(x){return translateTextAsync(x);})),tj=await Promise.all(r.instructions.map(function(x){return translateTextAsync(x);}));var ih='';for(var a=0;a<ti.length;a++)ih+='<li><span class="ing-dot"></span>'+escHtml(ti[a])+'</li>';var jh='';for(var b=0;b<tj.length;b++)jh+='<li>'+escHtml(tj[b])+'</li>';document.getElementById('modalBody').innerHTML='<div class="modal-title">'+escHtml(tt)+'</div><div class="modal-section-label">'+t('ingredients_title')+'</div><ul class="modal-ingredients">'+ih+'</ul><div class="modal-section-label">'+t('instructions_title')+'</div><ol class="modal-instructions">'+jh+'</ol>';document.getElementById('modalStats').innerHTML='<span><i class="fa-solid fa-eye"></i> '+formatNum(r.views)+' '+t('views')+'</span><span><i class="fa-solid fa-heart"></i> '+formatNum(r.likes||0)+' '+t('likes')+'</span><span><i class="fa-solid fa-comment"></i> '+formatNum((r.comments||[]).length)+' '+t('comments_count')+'</span>';var isO=r.ownerId===currentUser,isA=isAdminUser(),hc=r.fav?' liked':'',hi=r.fav?'fa-solid':'fa-regular';var fh='<button class="modal-action-btn'+hc+'" onclick="toggleFav('+i+')"><i class="'+hi+' fa-heart"></i></button><button class="modal-action-btn" onclick="openShareBar('+i+')" style="font-size:22px"><i class="fa-solid fa-share-nodes"></i></button>';if(isO||isA)fh+='<button class="modal-action-btn" onclick="editRecipe('+i+')"><i class="fa-regular fa-pen-to-square"></i></button><span class="modal-action-spacer"></span><button class="modal-action-btn delete-btn" onclick="deleteRecipe('+i+')"><i class="fa-regular fa-trash-can"></i></button>';else fh+='<span class="modal-action-spacer"></span>';document.getElementById('modalFooter').innerHTML=fh;renderComments(i);document.getElementById('viewModal').classList.add('show');document.body.style.overflow='hidden';}
 function closeView(e){if(e.target===e.currentTarget)closeViewForce();}
 function closeViewForce(){closeShareBar();document.getElementById('viewModal').classList.remove('show');document.body.style.overflow='';viewingIndex=-1;}
 function toggleFav(i){recipes[i].fav=!recipes[i].fav;save();render();var btn=document.querySelector('.modal-action-btn:first-child'),icon=btn.querySelector('i');if(recipes[i].fav){btn.classList.add('liked');icon.className='fa-solid fa-heart';showToast(t('added_fav'));}else{btn.classList.remove('liked');icon.className='fa-regular fa-heart';showToast(t('removed_fav'));}}
 function deleteRecipe(i){if(!confirm(t('confirm_delete')))return;recipes.splice(i,1);save();closeViewForce();render();showToast(t('deleted'));}
 
-/* ADD/EDIT */
+/* ========== PROFILE ========== */
+function openProfile(userId){if(!userId)return;viewingUserId=userId;var isOwn=userId===currentUser;var profile=getUserProfile(userId)||{},photo=profile.photo||getUserPhoto(userId),dn=profile.displayName||userId,bio=profile.bio||'',joined=profile.joined||Date.now();var h='<div class="profile-header-area"><button class="profile-close" onclick="closeProfileForce()">&times;</button><div class="profile-avatar-wrap'+(isOwn?'':' no-edit')+'"'+(isOwn?' onclick="document.getElementById(\'profilePhotoInput\').click()"':'')+'>'+(photo?'<img class="profile-avatar-img" src="'+photo+'">':'<div class="profile-avatar-placeholder">'+dn.charAt(0).toUpperCase()+'</div>')+(isOwn?'<div class="profile-avatar-overlay"><i class="fa-solid fa-camera"></i></div>':'')+'</div>'+(isOwn?'<input type="file" id="profilePhotoInput" accept="image/*" style="display:none" onchange="previewProfilePhoto(this)">':'')+'<div class="profile-username">'+escHtml(dn)+'</div><div class="profile-bio">'+escHtml(bio||t('no_bio'))+'</div><div class="profile-joined">'+t('joined')+' '+new Date(joined).toLocaleDateString()+'</div></div>';var mR=0,mL=0;for(var i=0;i<recipes.length;i++){if(recipes[i].ownerId===userId||recipes[i].author===userId){mR++;mL+=(recipes[i].likes||0);}}h+='<div class="profile-stats"><div class="profile-stat"><div class="profile-stat-num">'+mR+'</div><div class="profile-stat-label">Recipes</div></div><div class="profile-stat"><div class="profile-stat-num">'+mL+'</div><div class="profile-stat-label">Likes</div></div></div>';if(mR>0){h+='<div class="profile-section"><div class="section-header"><div class="section-title" style="font-size:16px">'+t('recipes_by')+' '+escHtml(dn)+'</div></div>';for(var j=0;j<recipes.length;j++){var r=recipes[j];if(r.ownerId!==userId&&r.author!==userId)continue;var ri=getFirstImg(r);h+='<div class="profile-mini-card" onclick="closeProfileForce();openView('+j+')">'+(ri?'<img class="profile-mini-img" src="'+ri+'" loading="lazy">':'<div class="profile-mini-img-ph">'+getCatEmoji(r.category)+'</div>')+'<div class="profile-mini-info"><div class="profile-mini-title">'+escHtml(tx(r.title))+'</div><div class="profile-mini-cat">'+txCat(r.category)+'</div><div class="profile-mini-stats"><i class="fa-solid fa-heart"></i> '+formatNum(r.likes||0)+' &middot; <i class="fa-solid fa-eye"></i> '+formatNum(r.views||0)+'</div></div></div>';}h+='</div>';}if(isOwn){h+='<div class="profile-section profile-edit-section"><div class="profile-section-title">'+t('edit_profile')+'</div><div class="profile-field"><label>Username</label><input type="text" id="profileUsername" value="'+escAttr(dn)+'" minlength="3" maxlength="30"></div><div class="profile-field"><label>Bio</label><textarea id="profileBio" maxlength="200">'+escHtml(bio)+'</textarea></div><button class="profile-save-btn" onclick="saveProfile()">'+t('save_changes')+'</button><button class="profile-logout" onclick="logoutFromProfile()">'+t('logout')+'</button></div>';}document.getElementById('profilePanel').innerHTML=h;document.getElementById('profileBackdrop').classList.add('show');document.body.style.overflow='hidden';}
+function closeProfile(e){if(e.target===e.currentTarget)closeProfileForce();}
+function closeProfileForce(){document.getElementById('profileBackdrop').classList.remove('show');document.body.style.overflow='';viewingUserId=null;}
+function previewProfilePhoto(input){if(!input.files||!input.files[0])return;var reader=new FileReader();reader.onload=function(e){compressImage(e.target.result,300,0.8,function(url){var p=getUserProfile(currentUser)||{displayName:currentUser,bio:'',photo:'',joined:Date.now()};p.photo=url;saveUserProfile(currentUser,p);updateBadgeAvatar();openProfile(currentUser);});};reader.readAsDataURL(input.files[0]);}
+function saveProfile(){var nn=document.getElementById('profileUsername').value.trim(),nb=document.getElementById('profileBio').value.trim();if(nn.length<3){showToast('Username must be at least 3 characters');return;}if(!/^[a-zA-Z0-9_ ]+$/.test(nn)){showToast('Letters, numbers, spaces, underscores only');return;}if(nn.toLowerCase()!==currentUser.toLowerCase()){var users=getUsers();for(var i=0;i<users.length;i++){if(users[i].name.toLowerCase()===nn.toLowerCase()){showToast('Username taken');return;}}}var p=getUserProfile(currentUser)||{displayName:currentUser,bio:'',photo:'',joined:Date.now()};p.displayName=nn;p.bio=nb;saveUserProfile(currentUser,p);if(nn.toLowerCase()!==currentUser.toLowerCase()){var users=getUsers();for(var j=0;j<users.length;j++){if(users[j].name.toLowerCase()===currentUser.toLowerCase()){users[j].name=nn;break;}}saveUsers(users);for(var k=0;k<recipes.length;k++){if(recipes[k].ownerId===currentUser)recipes[k].ownerId=nn;if(recipes[k].author===currentUser)recipes[k].author=nn;for(var c=0;c<(recipes[k].comments||[]).length;c++){if(recipes[k].comments[c].userId===currentUser){recipes[k].comments[c].name=nn;recipes[k].comments[c].userId=nn;}}}save();try{var profiles=JSON.parse(localStorage.getItem('ndesanjo_profiles'))||{};delete profiles[currentUser.toLowerCase()];localStorage.setItem('ndesanjo_profiles',JSON.stringify(profiles));}catch(e){}saveUserProfile(nn,p);if(myPresenceRef&&firebaseDB){try{myPresenceRef.remove();}catch(e){}}currentUser=nn;createSession(nn);setupPresence();}updateBadgeAvatar();render();showToast('Profile updated');openProfile(currentUser);}
+function logoutFromProfile(){closeProfileForce();destroySession();document.getElementById('userBadge').style.display='none';document.getElementById('addNavBtn').style.display='none';document.getElementById('fabBtn').style.display='none';document.getElementById('notifBell').style.display='none';document.getElementById('authOverlay').classList.remove('hidden');document.getElementById('loginUser').value='';document.getElementById('loginPass').value='';clearAuthError();}
+
+/* ========== SHARING ========== */
+function openShareBar(i){shareRecipeIndex=i;document.getElementById('shareBar').classList.add('show');}
+function closeShareBar(){document.getElementById('shareBar').classList.remove('show');shareRecipeIndex=-1;}
+function shareWhatsApp(){window.open('https://wa.me/?text='+encodeURIComponent(t('share_text')+' '+recipes[shareRecipeIndex].title),'_blank');closeShareBar();}
+function shareTwitter(){window.open('https://twitter.com/intent/tweet?text='+encodeURIComponent(t('share_text')+' '+recipes[shareRecipeIndex].title),'_blank');closeShareBar();}
+function shareFacebook(){window.open('https://www.facebook.com/sharer/sharer.php?quote='+encodeURIComponent(t('share_text')+' '+recipes[shareRecipeIndex].title),'_blank');closeShareBar();}
+function copyRecipeLink(){var r=recipes[shareRecipeIndex],d={t:r.title,c:r.category,i:r.ingredients,s:r.instructions,a:r.author},enc=btoa(unescape(encodeURIComponent(JSON.stringify(d)))),url=location.origin+location.pathname+'#recipe='+enc;if(navigator.clipboard)navigator.clipboard.writeText(url).then(function(){showToast(t('link_copied'));});else{var ta=document.createElement('textarea');ta.value=url;ta.style.cssText='position:fixed;opacity:0';document.body.appendChild(ta);ta.select();document.execCommand('copy');document.body.removeChild(ta);showToast(t('link_copied'));}closeShareBar();}
+function checkSharedRecipe(){var h=location.hash;if(h.indexOf('#recipe=')===0){try{var json=decodeURIComponent(escape(atob(h.substring(8)))),data=JSON.parse(json),exists=false;for(var i=0;i<recipes.length;i++){if(recipes[i].title===data.t&&recipes[i].author===data.a){exists=true;openView(i);break;}}if(!exists){recipes.push({title:data.t,category:data.c||'Dinner',ingredients:data.i||[],instructions:data.s||[],image:'',images:[],author:data.a||'Shared',ownerId:currentUser||'',views:0,likes:0,fav:false,comments:[],_id:genId()});save();render();openView(recipes.length-1);}history.replaceState(null,'',location.pathname);}catch(e){}}}
+
+/* ========== COMMENTS ========== */
+var EMOJI_LIST=['\u{1F600}','\u{1F603}','\u{1F604}','\u{1F601}','\u{1F606}','\u{1F605}','\u{1F923}','\u{1F602}','\u{1F642}','\u{1F609}','\u{1F60A}','\u{1F607}','\u{1F970}','\u{1F60D}','\u{1F929}','\u{1F618}','\u{1F617}','\u{1F61A}','\u{1F972}','\u{1F60B}','\u{1F61B}','\u{1F92A}','\u{1F61D}','\u{1F911}','\u{1F917}','\u{1F92D}','\u{1F914}','\u{1F910}','\u{1F610}','\u{1F60F}','\u{1F612}','\u{1F644}','\u{1F62C}','\u{1F60C}','\u{1F614}','\u{1F62A}','\u{1F924}','\u{1F634}','\u{1F637}','\u{1F912}','\u{1F915}','\u{1F922}','\u{1F92E}','\u{1F927}','\u{1F975}','\u{1F976}','\u{1F973}','\u{1F60E}','\u{1F913}','\u{1F9D0}','\u{1F615}','\u{1F61F}','\u{1F641}','\u{2639}\uFE0F','\u{1F62E}','\u{1F62F}','\u{1F633}','\u{1F63F}','\u{1F626}','\u{1F627}','\u{1F628}','\u{1F630}','\u{1F625}','\u{1F622}','\u{1F62D}','\u{1F631}','\u{1F616}','\u{1F623}','\u{1F61E}','\u{1F613}','\u{1F629}','\u{1F62B}','\u{1F971}','\u{1F624}','\u{1F621}','\u{1F620}','\u{1F92C}','\u{1F44D}','\u{1F44E}','\u{1F44F}','\u{1F64C}','\u{1F91D}','\u{1F64F}','\u{1F4AA}','\u{1F525}','\u2764\uFE0F','\u{1F495}','\u{1F496}','\u{1F497}','\u{1F494}','\u{1F4AF}','\u{2728}','\u{1F389}','\u{1F31F}','\u{2B50}','\u{1F373}','\u{1F370}','\u{1F381}','\u{1F36B}','\u{2615}'];
+
+async function renderComments(i){
+    var r=recipes[i];if(!r)return;if(!r.comments)r.comments=[];var sec=document.getElementById('commentsSection'),lh='';
+    if(!r.comments.length)lh='<div class="no-comments">'+t('comment_placeholder')+'</div>';
+    else{for(var c=0;c<r.comments.length;c++){var cm=r.comments[c],tt=await translateTextAsync(cm.text),cp=cm.userId?getUserPhoto(cm.userId):'',oc=cm.userId?' onclick="event.stopPropagation();openProfile(\''+escAttr(cm.userId)+'\')"':'';lh+='<div class="comment-item" style="animation-delay:'+(c*.05)+'s"><div class="comment-avatar"'+oc+'>'+(cp?'<img src="'+cp+'">':escHtml((cm.name||'?').charAt(0).toUpperCase()))+'</div><div class="comment-body"><div class="comment-name"'+oc+'>'+escHtml(cm.name)+'</div><div class="comment-text">'+escHtml(tt)+'</div><div class="comment-time">'+timeAgo(cm.time)+'</div></div></div>';}}
+    var eg='';for(var e=0;e<EMOJI_LIST.length;e++)eg+='<span onclick="insertEmoji(\''+EMOJI_LIST[e].replace(/'/g,"\\'")+'\')">'+EMOJI_LIST[e]+'</span>';
+    sec.innerHTML='<div class="modal-section-label">'+t('comments_title')+'</div><div class="comments-list" id="commentsList">'+lh+'</div><div class="comment-input-wrap"><textarea class="comment-input" id="commentInput" placeholder="'+t('comment_placeholder')+'"></textarea><button class="emoji-btn" onclick="toggleEmojiPicker()" type="button"><i class="fa-regular fa-face-smile"></i></button><div class="emoji-picker" id="emojiPicker"><div class="emoji-grid">'+eg+'</div></div><button class="comment-send" onclick="postComment('+i+')" type="button"><i class="fa-solid fa-paper-plane"></i></button></div>';
+}
+function toggleEmojiPicker(){document.getElementById('emojiPicker').classList.toggle('show');}
+function insertEmoji(em){var inp=document.getElementById('commentInput');inp.value+=em;inp.focus();}
+function postComment(i){var inp=document.getElementById('commentInput'),text=inp.value.trim();if(!text||!currentUser)return;var r=recipes[i];if(!r.comments)r.comments=[];r.comments.unshift({name:getUserDisplayName(currentUser),text:text,time:Date.now(),userId:currentUser});save();renderComments(i);inp.value='';}
+
+/* ========== ADD / EDIT ========== */
 function openAdd(){document.getElementById('editIndex').value='';document.getElementById('addForm').reset();tempGalleryImages=[];renderGalleryThumbs();document.getElementById('fAuthor').value=currentUser||'';updateUIStrings();document.getElementById('addModal').classList.add('show');document.body.style.overflow='hidden';setTimeout(function(){document.getElementById('fTitle').focus();},350);}
-function editRecipe(i){closeViewForce();var r=recipes[i];document.getElementById('editIndex').value=i;document.getElementById('fTitle').value=r.title;document.getElementById('fCategory').value=r.category;document.getElementById('fIngredients').value=r.ingredients.join('\n');document.getElementById('fInstructions').value=r.instructions.join('\n');document.getElementById('fAuthor').value=r.author||'';tempGalleryImages=[];if(r.images&&r.images.length>0){for(var x=0;x<r.images.length;x++)tempGalleryImages.push(r.images[x]);}else if(r.image){tempGalleryImages.push(r.image);}renderGalleryThumbs();updateUIStrings();document.getElementById('submitBtn').textContent=t('update_recipe');document.getElementById('addModal').classList.add('show');document.body.style.overflow='hidden';}
+function editRecipe(i){closeViewForce();var r=recipes[i];document.getElementById('editIndex').value=i;document.getElementById('fTitle').value=r.title;document.getElementById('fCategory').value=r.category;document.getElementById('fIngredients').value=r.ingredients.join('\n');document.getElementById('fInstructions').value=r.instructions.join('\n');document.getElementById('fAuthor').value=r.author||'';tempGalleryImages=[];if(r.images&&r.images.length)for(var x=0;x<r.images.length;x++)tempGalleryImages.push(r.images[x]);else if(r.image)tempGalleryImages.push(r.image);renderGalleryThumbs();updateUIStrings();document.getElementById('submitBtn').textContent=t('update_recipe');document.getElementById('addModal').classList.add('show');document.body.style.overflow='hidden';}
 function closeAdd(e){if(e.target===e.currentTarget)closeAddForce();}
 function closeAddForce(){document.getElementById('addModal').classList.remove('show');document.body.style.overflow='';}
-function previewGalleryImages(input){if(!input.files)return;for(var i=0;i<input.files.length;i++){(function(file){var reader=new FileReader();reader.onload=function(e){compressImage(e.target.result,800,0.75,function(dataUrl){tempGalleryImages.push(dataUrl);renderGalleryThumbs();});};reader.readAsDataURL(file);})(input.files[i]);}input.value='';}
-function renderGalleryThumbs(){var area=document.getElementById('galleryUploadArea');var html='<div class="gallery-upload-btn" onclick="document.getElementById(\'fImages\').click()"><i class="fa-solid fa-camera"></i><span>Add</span></div>';for(var i=0;i<tempGalleryImages.length;i++){html+='<div class="gallery-thumb-wrap" style="animation-delay:'+(i*0.06)+'s"><img src="'+tempGalleryImages[i]+'">'+(i===0?'<div class="gallery-thumb-primary">MAIN</div>':'')+'<button type="button" class="gallery-thumb-remove" onclick="removeGalleryImage('+i+')"><i class="fa-solid fa-xmark"></i></button></div>';}area.innerHTML=html;}
+function previewGalleryImages(input){if(!input.files)return;for(var i=0;i<input.files.length;i++){(function(f){var reader=new FileReader();reader.onload=function(e){compressImage(e.target.result,800,0.75,function(url){tempGalleryImages.push(url);renderGalleryThumbs();});};reader.readAsDataURL(f);})(input.files[i]);}input.value='';}
+function renderGalleryThumbs(){var a=document.getElementById('galleryUploadArea'),h='<div class="gallery-upload-btn" onclick="document.getElementById(\'fImages\').click()"><i class="fa-solid fa-camera"></i><span>Add</span></div>';for(var i=0;i<tempGalleryImages.length;i++)h+='<div class="gallery-thumb-wrap" style="animation-delay:'+(i*.06)+'s"><img src="'+tempGalleryImages[i]+'">'+(i===0?'<div class="gallery-thumb-primary">MAIN</div>':'')+'<button type="button" class="gallery-thumb-remove" onclick="removeGalleryImage('+i+')"><i class="fa-solid fa-xmark"></i></button></div>';a.innerHTML=h;}
 function removeGalleryImage(idx){tempGalleryImages.splice(idx,1);renderGalleryThumbs();}
+function saveRecipe(e){e.preventDefault();var idx=document.getElementById('editIndex').value,ir=document.getElementById('fIngredients').value.split('\n'),jr=document.getElementById('fInstructions').value.split('\n'),ci=[],cj=[];for(var a=0;a<ir.length;a++){var v=ir[a].trim();if(v)ci.push(v);}for(var b=0;b<jr.length;b++){var w=jr[b].trim();if(w)cj.push(w);}var eid=(idx!==''&&recipes[parseInt(idx)])?recipes[parseInt(idx)]._id:genId();var data={title:document.getElementById('fTitle').value.trim(),category:document.getElementById('fCategory').value,ingredients:ci,instructions:cj,images:tempGalleryImages.slice(),image:tempGalleryImages.length?tempGalleryImages[0]:'',author:currentUser||'Guest',ownerId:idx!==''?(recipes[parseInt(idx)].ownerId||''):currentUser,views:idx!==''?(recipes[parseInt(idx)].views||0):0,likes:idx!==''?(recipes[parseInt(idx)].likes||0):0,fav:idx!==''?recipes[parseInt(idx)].fav:false,comments:idx!==''?(recipes[parseInt(idx)].comments||[]):[],_id:eid};if(idx===''){recipes.push(data);showToast(t('saved_msg'));}else{recipes[parseInt(idx)]=data;showToast(t('updated_msg'));}save();closeAddForce();render();}
 
-function saveRecipe(e){e.preventDefault();var idx=document.getElementById('editIndex').value;var ir=document.getElementById('fIngredients').value.split('\n'),jr=document.getElementById('fInstructions').value.split('\n'),ci=[],cj=[];for(var a=0;a<ir.length;a++){var v=ir[a].trim();if(v)ci.push(v);}for(var b=0;b<jr.length;b++){var w=jr[b].trim();if(w)cj.push(w);}var data={title:document.getElementById('fTitle').value.trim(),category:document.getElementById('fCategory').value,ingredients:ci,instructions:cj,images:tempGalleryImages.slice(),image:tempGalleryImages.length>0?tempGalleryImages[0]:'',author:currentUser||'Guest',ownerId:idx!==''?(recipes[parseInt(idx)].ownerId||''):currentUser,views:idx!==''?(recipes[parseInt(idx)].views||0):0,likes:idx!==''?(recipes[parseInt(idx)].likes||0):0,fav:idx!==''?recipes[parseInt(idx)].fav:false,comments:idx!==''?(recipes[parseInt(idx)].comments||[]):[]};if(idx===''){recipes.push(data);showToast(t('saved_msg'));}else{recipes[parseInt(idx)]=data;showToast(t('updated_msg'));}save();closeAddForce();render();}
+/* ========== ADMIN PANEL ========== */
+function openAdminPanel(){if(!isAdminUser())return;renderAdminPanel();document.getElementById('adminBackdrop').classList.add('show');document.body.style.overflow='hidden';}
+function closeAdmin(e){if(e.target===e.currentTarget)closeAdminForce();}
+function closeAdminForce(){document.getElementById('adminBackdrop').classList.remove('show');document.body.style.overflow='';}
+function renderAdminPanel(){
+    var banned=getBanned(),bn={};for(var bi=0;bi<banned.length;bi++)bn[banned[bi].name.toLowerCase()]=true;
+    var users=getUsers(),um={};for(var u=0;u<users.length;u++)um[users[u].name.toLowerCase()]=users[u];
+    var oh='',oc=0,seen={};
+    if(syncMode==='online'){for(var key in onlineUsers){var ou=onlineUsers[key];if(!ou||!ou.name||seen[ou.name.toLowerCase()])continue;seen[ou.name.toLowerCase()]=true;oc++;var ib=bn[ou.name.toLowerCase()],up=getUserPhoto(ou.name),ai=up?'<img src="'+up+'">':ou.name.charAt(0).toUpperCase(),tag=ib?'<span class="tag banned-tag">BANNED</span>':ou.name.substring(0,3)==='000'||ou.name.toLowerCase().trim()==='bryan 5'?'<span class="tag admin-tag">ADMIN</span>':'<span class="tag online-tag">ONLINE</span>',ab=ib?'<button class="admin-btn-sm unban-btn" onclick="unbanUser(\''+escAttr(ou.name)+'\')"><i class="fa-solid fa-lock-open"></i></button>':'<button class="admin-btn-sm ban-btn" onclick="banUser(\''+escAttr(ou.name)+'\')"><i class="fa-solid fa-ban"></i></button>';oh+='<div class="admin-user-row"><div class="admin-user-avatar'+(ib?' banned-avatar':'')+'" onclick="closeAdminForce();openProfile(\''+escAttr(ou.name)+'\')">'+ai+'</div><div class="admin-user-info" onclick="closeAdminForce();openProfile(\''+escAttr(ou.name)+'\')"><div class="admin-user-name">'+escHtml(ou.displayName||ou.name)+tag+'</div><div class="admin-user-time">Active now</div></div><div class="admin-user-actions">'+ab+'<button class="admin-btn-sm view-btn" onclick="closeAdminForce();openProfile(\''+escAttr(ou.name)+'\')"><i class="fa-solid fa-user"></i></button></div></div>';}}
+    if(!oh)oh='<div class="admin-empty">'+(syncMode==='online'?'No one online right now':'Connect Firebase to see online users')+'</div>';
+    document.getElementById('adminOnlineCount').textContent=oc;document.getElementById('adminOnlineList').innerHTML=oh;
+    var ah='';for(var ui=0;ui<users.length;ui++){var usr=users[ui],ub=bn[usr.name.toLowerCase()],up2=getUserPhoto(usr.name),ai2=up2?'<img src="'+up2+'">':usr.name.charAt(0).toUpperCase(),isAdmin=usr.name.substring(0,3)==='000'||usr.name.toLowerCase().trim()==='bryan 5',tag2=ub?'<span class="tag banned-tag">BANNED</span>':isAdmin?'<span class="tag admin-tag">ADMIN</span>':'',ab2=ub?'<button class="admin-btn-sm unban-btn" onclick="unbanUser(\''+escAttr(usr.name)+'\')"><i class="fa-solid fa-lock-open"></i></button>':'<button class="admin-btn-sm ban-btn" onclick="banUser(\''+escAttr(usr.name)+'\')"><i class="fa-solid fa-ban"></i></button>';ah+='<div class="admin-user-row"><div class="admin-user-avatar'+(ub?' banned-avatar':'')+'" onclick="closeAdminForce();openProfile(\''+escAttr(usr.name)+'\')">'+ai2+'</div><div class="admin-user-info" onclick="closeAdminForce();openProfile(\''+escAttr(usr.name)+'\')"><div class="admin-user-name">'+escHtml(getUserDisplayName(usr.name))+tag2+'</div><div class="admin-user-time">'+t('joined')+' '+new Date(usr.joined||Date.now()).toLocaleDateString()+'</div></div><div class="admin-user-actions">'+ab2+'<button class="admin-btn-sm view-btn" onclick="closeAdminForce();openProfile(\''+escAttr(usr.name)+'\')"><i class="fa-solid fa-user"></i></button></div></div>';}
+    if(!ah)ah='<div class="admin-empty">No registered users</div>';document.getElementById('adminAllUsersList').innerHTML=ah;
+    var bh='';for(var bi2=0;bi2<banned.length;bi2++){var bnn=banned[bi2];bh+='<div class="admin-user-row"><div class="admin-user-avatar banned-avatar"><i class="fa-solid fa-user-slash" style="font-size:12px"></i></div><div class="admin-user-info"><div class="admin-user-name">'+escHtml(bnn.name)+'<span class="tag banned-tag">BANNED</span></div><div class="admin-user-time">Since '+new Date(bnn.time).toLocaleDateString()+'</div></div><div class="admin-user-actions"><button class="admin-btn-sm unban-btn" onclick="unbanUser(\''+escAttr(bnn.name)+'\')"><i class="fa-solid fa-lock-open"></i></button></div></div>';}
+    if(!bh)bh='<div class="admin-empty">No banned users</div>';document.getElementById('adminBannedList').innerHTML=bh;
+}
+function banUser(name){if(!isAdminUser())return;var b=getBanned();for(var i=0;i<b.length;i++){if(b[i].name.toLowerCase()===name.toLowerCase()){showToast('Already banned');return;}}if(name.toLowerCase().trim()==='bryan 5'&&isAdminUser()){showToast('Cannot ban the admin');return;}b.push({name:name,time:Date.now()});saveBanned(b);if(isAdminUser())renderAdminPanel();render();showToast(name+' banned');}
+function unbanUser(name){if(!isAdminUser())return;saveBanned(getBanned().filter(function(b){return b.name.toLowerCase()!==name.toLowerCase();}));if(isAdminUser())renderAdminPanel();render();showToast(name+' unbanned');}
 
+/* ========== DARK MODE ========== */
 function toggleDark(){document.body.classList.toggle('dark');var d=document.body.classList.contains('dark');document.getElementById('darkBtn').innerHTML=d?'<i class="fa-solid fa-sun"></i>':'<i class="fa-solid fa-moon"></i>';try{localStorage.setItem('ndesanjo_dark',d);}catch(e){}}
 if(localStorage.getItem('ndesanjo_dark')==='true'){document.body.classList.add('dark');document.getElementById('darkBtn').innerHTML='<i class="fa-solid fa-sun"></i>';}
-var toastTimer=null;
+
+/* ========== TOAST ========== */
 function showToast(msg){var el=document.getElementById('toast');el.textContent=msg;el.classList.add('show');clearTimeout(toastTimer);toastTimer=setTimeout(function(){el.classList.remove('show');},2200);}
-document.addEventListener('keydown',function(e){if(e.key==='Escape'){if(document.getElementById('shareBar').classList.contains('show'))closeShareBar();else if(document.getElementById('addModal').classList.contains('show'))closeAddForce();else if(document.getElementById('viewModal').classList.contains('show'))closeViewForce();else if(document.getElementById('profileBackdrop').classList.contains('show'))closeProfileForce();else if(document.getElementById('adminBackdrop').classList.contains('show'))closeAdminForce();}});
-document.addEventListener('touchstart',function(e){var it=e.target.closest('.grid-item');if(it)it.classList.add('touched');},{passive:true});
-document.addEventListener('touchend',function(){var its=document.querySelectorAll('.grid-item.touched');for(var i=0;i<its.length;i++)its[i].classList.remove('touched');},{passive:true});
-document.addEventListener('click',function(e){if(!e.target.closest('.emoji-picker')&&!e.target.closest('.emoji-btn')){var ep=document.getElementById('emojiPicker');if(ep)ep.classList.remove('show');}if(!e.target.closest('.share-bar')&&!e.target.closest('.modal-share-btn'))closeShareBar();});
 
-function seedData(){recipes=[{title:"Mandazi with Chai",category:"Breakfast",ingredients:["3 cups all-purpose flour","1/2 cup sugar","1 tsp cardamom","2 eggs","1/2 cup warm milk","Oil for frying"],instructions:["Mix flour, sugar, and cardamom in a large bowl","Beat eggs and add to the dry mixture","Gradually add warm milk and knead into soft dough","Let rest for 30 minutes covered","Roll out and cut into triangles","Deep fry in hot oil until golden brown","Serve with hot spiced chai"],image:"https://picsum.photos/seed/mandazi22/600/600.jpg",images:["https://picsum.photos/seed/mandazi22/600/600.jpg","https://picsum.photos/seed/mandazi-side/600/600.jpg","https://picsum.photos/seed/mandazi-top/600/600.jpg"],author:"000Ndesanjo",ownerId:"000Ndesanjo",views:47,likes:12,fav:true,comments:[{name:"Amina",text:"My family loves this!",time:Date.now()-3600000,userId:"amina"},{name:"Juma",text:"Best mandazi recipe I have tried",time:Date.now()-86400000,userId:"juma"}]},{title:"Ugali wa Mahindi",category:"Dinner",ingredients:["2 cups maize flour","3 cups water","Pinch of salt"],instructions:["Bring water to a boil in a heavy saucepan","Slowly add maize flour while stirring with a wooden spoon","Reduce heat and continue stirring firmly","The mixture will thicken and pull away from sides","Cover and let cook for 2 minutes","Serve hot with sukuma wiki or nyama choma"],image:"https://picsum.photos/seed/ugali44/600/600.jpg",images:["https://picsum.photos/seed/ugali44/600/600.jpg","https://picsum.photos/seed/ugali-plate/600/600.jpg"],author:"000Ndesanjo",ownerId:"000Ndesanjo",views:89,likes:23,fav:false,comments:[{name:"Peter",text:"Cannot eat anything without ugali",time:Date.now()-7200000,userId:"peter"}]},{title:"Sukuma Wiki",category:"Lunch",ingredients:["1 bunch collard greens","1 onion diced","2 tomatoes chopped","1 tbsp oil","Salt to taste","1/2 tsp turmeric"],instructions:["Wash and chop collard greens into thin strips","Heat oil in a pan and saute onion until golden","Add tomatoes and cook until soft","Add sukuma wiki and turmeric","Cover and cook for 5-7 minutes until tender","Season with salt and serve with ugali"],image:"https://picsum.photos/seed/sukuma55/600/600.jpg",images:["https://picsum.photos/seed/sukuma55/600/600.jpg"],author:"000Ndesanjo",ownerId:"000Ndesanjo",views:34,likes:8,fav:true,comments:[]},{title:"Nyama Choma",category:"Dinner",ingredients:["1 kg goat meat","Salt","Lemon juice","2 cloves garlic minced","1 tsp black pepper","Charcoal for grilling"],instructions:["Cut goat meat into generous chunks","Mix salt, lemon juice, garlic, and pepper","Marinate meat for at least 2 hours","Prepare charcoal grill on medium-high heat","Grill meat turning occasionally for 20-30 minutes","Serve with kachumbari and ugali"],image:"https://picsum.photos/seed/nyama66/600/600.jpg",images:["https://picsum.photos/seed/nyama66/600/600.jpg","https://picsum.photos/seed/nyama-grill/600/600.jpg","https://picsum.photos/seed/nyama-serve/600/600.jpg","https://picsum.photos/seed/nyama-close/600/600.jpg"],author:"000Ndesanjo",ownerId:"000Ndesanjo",views:156,likes:45,fav:false,comments:[{name:"David",text:"Nyama choma is life!",time:Date.now()-1800000,userId:"david"}]},{title:"Kachumbari Salad",category:"Lunch",ingredients:["3 large tomatoes diced","1 red onion thinly sliced","1 cucumber diced","Fresh coriander chopped","Lemon juice","Salt and chili to taste"],instructions:["Dice tomatoes and cucumber into small even pieces","Thinly slice red onion into half-moons","Soak onion in cold water for 5 minutes","Drain onion and combine all vegetables","Squeeze lemon juice over the salad","Add coriander, salt, and chili then toss gently"],image:"https://picsum.photos/seed/kachumbari77/600/600.jpg",images:["https://picsum.photos/seed/kachumbari77/600/600.jpg"],author:"000Ndesanjo",ownerId:"000Ndesanjo",views:22,likes:5,fav:false,comments:[]},{title:"Sweet Banana Cake",category:"Dessert",ingredients:["4 ripe bananas","2 cups flour","1 cup sugar","2 eggs","1/2 cup melted butter","1 tsp baking soda","1 tsp vanilla essence"],instructions:["Preheat oven to 175 degrees Celsius","Mash bananas thoroughly in a large bowl","Add sugar, eggs, and melted butter then mix well","Sift in flour and baking soda","Add vanilla essence and fold until just combined","Pour into a greased loaf tin","Bake for 50-55 minutes until a skewer comes out clean"],image:"https://picsum.photos/seed/banana88/600/600.jpg",images:["https://picsum.photos/seed/banana88/600/600.jpg","https://picsum.photos/seed/banana-slice/600/600.jpg","https://picsum.photos/seed/banana-whole/600/600.jpg"],author:"000Ndesanjo",ownerId:"000Ndesanjo",views:63,likes:19,fav:true,comments:[{name:"Fatima",text:"Kids absolutely love this cake",time:Date.now()-5400000,userId:"fatima"}]}];save();}
-
-if(recipes.length===0)seedData();
-document.getElementById('langLabel').textContent=currentLang==='en'?'SW':'EN';
-if(localStorage.getItem('ndesanjo_dark')==='true'){document.body.classList.add('dark');document.getElementById('darkBtn').innerHTML='<i class="fa-solid fa-sun"></i>';}
-(function(){try{var session=JSON.parse(localStorage.getItem('ndesanjo_session'));if(session&&session.name){currentUser=session.name;enterApp();}}catch(e){try{localStorage.removeItem('ndesanjo_session');}catch(e2){}}})();
-updateVisitorCount();
-setTimeout(checkSharedRecipe,300);
-</script>
-</body>
-      </html>
+/* ========== SEED DATA ========== */
+function seedData(){recipes=[
+{title:"Mandazi with Chai",
